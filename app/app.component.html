@@ -1,0 +1,13 @@
+<StackLayout class="p-20">
+    
+    <TextField hint="Código" keyboardType="number" [(ngModel)]="user.codigo"
+      autocorrect="false" autocapitalizationType="none"></TextField>
+    <TextField hint="Apellido y nombre" keyboardType="search" [(ngModel)]="user.nombre"
+      autocorrect="true" autocapitalizationType="none"></TextField>
+    <Button [text]="byCode ? 'Buscar por codigo' : 'Buscar por nombre'" class="submit-button" (tap)="submit()"></Button>
+    <Button [text]="byCode ? 'Por codigo' : 'Por nombre'" (tap)="toggleDisplay()"></Button>
+    <Label [text]="message" class="h2 text-center" textWrap="true"></Label>
+    
+</StackLayout>
+
+
