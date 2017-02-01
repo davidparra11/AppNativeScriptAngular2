@@ -1,1 +1,8 @@
-<Label text="SIDIFAPP" class="h1 text-center"></Label>
+<GridLayout>
+    <Label text="SIDIFAPP" class="h2 text-center"></Label>
+    <ListView [items]="resultList" class="small-spacing">
+        <template let-item="item">
+            <Label [text]="item.name" class="medium-spacing"></Label>
+        </template>
+    </ListView>
+</GridLayout>
