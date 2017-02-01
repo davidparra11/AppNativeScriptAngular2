@@ -5,4 +5,5 @@
             <Label [text]="item.name" class="medium-spacing"></Label>
         </template>
     </ListView>
+    <ActivityIndicator [busy]="isLoading" [visibility]="isLoading ? 'visible' : 'collapse'" row="1" horizontalAlignment="center" verticalAlignment="center"></ActivityIndicator>
 </GridLayout>

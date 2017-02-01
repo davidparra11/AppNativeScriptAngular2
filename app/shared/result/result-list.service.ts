@@ -10,26 +10,33 @@ import { Result } from "./result";
 export class ResultListService {
   constructor(private http: Http) {}
 
+  
   load() {
     let headers = new Headers();
     headers.append("Authorization", "Bearer " + Config.token);
-
+    console.log("entra");
     return this.http.get(Config.apiUrl + "Results", {
       headers: headers
     })
     .map(res => res.json()) //RxJS map()para crear un nuevo array con los resultados (Result objects) de la llamada de la funcion.
     .map(data => {
+      console.log("resultado de DATA: " + data);
       let resultList = [];
       data.Result.forEach((result) => {
         resultList.push(new Result(result.Id, result.Name));
       });
+      console.log("resultado de result: " + resultList);
       return resultList;
     })
     .catch(this.handleErrors);
   }
 
   handleErrors(error: Response) {
-    console.log(JSON.stringify(error.json()));
+    console.log("error: " + JSON.stringify(error.json()));
     return Observable.throw(error);
+  }
+
+  showConsole(variable){
+
   }
 }

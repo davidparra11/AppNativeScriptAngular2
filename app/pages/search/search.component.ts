@@ -35,6 +35,10 @@ export class SearchComponent implements OnInit {
         }
     }
     submit() {
+        if (!this.user.isValidCode()) {
+            alert("El codigo esta entre [,].");
+            return;
+        }
         alert("Ingresaste: " + this.user.codigo);
         this.counter = 0;
         if (this.byCode) {

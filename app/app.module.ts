@@ -1,6 +1,6 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
-import { NativeScriptFormsModule } from "nativescript-angular/forms";
-import { NativeScriptHttpModule } from "nativescript-angular/http";
+import { NativeScriptFormsModule } from "nativescript-angular/forms"; //makes the [(ngModel)] syntax work with NativeScript’s UI components.
+import { NativeScriptHttpModule } from "nativescript-angular/http";  //is a NativeScript wrapper of Angular’s HttpModule, a module that declares all of Angular’s HTTP-based services—including the Http service that UserService uses.
 import { NativeScriptModule } from "nativescript-angular/platform";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 
@@ -22,3 +22,5 @@ import { routes, navigatableComponents } from "./app.routing";
     schemas: [NO_ERRORS_SCHEMA]
 })
 export class AppModule { }
+
+

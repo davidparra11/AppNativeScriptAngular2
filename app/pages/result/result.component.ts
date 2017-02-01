@@ -10,16 +10,21 @@ import { ResultListService } from "../../shared/result/result-list.service";
 })
 export class ResultComponent implements OnInit {
   resultList: Array<Result> = [];
+  isLoading = false;
 
   constructor(private resultListService: ResultListService) {}
 
 
   ngOnInit() {
+  this.isLoading = true;
   this.resultListService.load()
     .subscribe(loadedResults => {
+      console.log("entra1" + loadedResults);
       loadedResults.forEach((resultObject) => {
+        console.log("entra2" + loadedResults);
         this.resultList.unshift(resultObject);
       });
+      this.isLoading = false;
     });
 }
 }
