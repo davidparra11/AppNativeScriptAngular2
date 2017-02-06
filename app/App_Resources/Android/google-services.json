@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1019122393264",
+    "firebase_url": "https://sidif-fdc1c.firebaseio.com",
+    "project_id": "sidif-fdc1c",
+    "storage_bucket": "sidif-fdc1c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1019122393264:android:2ca79ac80179f798",
+        "android_client_info": {
+          "package_name": "org.nativescript.appSidif"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1019122393264-gg56iklo9iib33t2sihdbit7qba09m2r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLMOv73-TW4qay_XpK6FnSyN-5MVZC468"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
