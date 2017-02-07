@@ -6,10 +6,6 @@ import { Page } from "ui/page";
 import { Color } from "color";
 import { View } from "ui/core/view";
 
-//import * as SocialShare from "nativescript-plugin-firebase"
-
-import firebase = require("nativescript-plugin-firebase");
-
 
 @Component({
     selector: "my-app",
@@ -29,25 +25,7 @@ export class SearchComponent implements OnInit {
     }
     ngOnInit() {
         this.page.actionBarHidden = true;
-        this.page.backgroundImage = "res://background";
-        firebase.init({
-            // Optionally pass in properties for database, authentication and cloud messaging,
-            // see their respective docs.
-            onMessageReceivedCallback: function (message) {
-                console.log("Title: " + message.title);
-                console.log("Body: " + message.body);
-                // if your server passed a custom property called 'foo', then do this:
-                console.log("Adentro ");
-            }
-        }).then(
-            (instance) => {
-                console.log("firebase.init done");
-            },
-            (error) => {
-                console.log("firebase.init error: " + error);
-            }
-            );
-
+        this.page.backgroundImage = "res://background";        
     }
 
     public get message(): string {
@@ -59,7 +37,7 @@ export class SearchComponent implements OnInit {
     }
     submit() {
         if (!this.user.isValidCode()) {
-            alert("El codigo esta entre [,].");
+            alert("El codigo esta entre [3,15].");
             return;
         }
         alert("Ingresaste: " + this.user.codigo);
