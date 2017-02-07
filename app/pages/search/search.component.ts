@@ -6,7 +6,6 @@ import { Page } from "ui/page";
 import { Color } from "color";
 import { View } from "ui/core/view";
 
-
 @Component({
     selector: "my-app",
     providers: [UserService],
@@ -25,7 +24,7 @@ export class SearchComponent implements OnInit {
     }
     ngOnInit() {
         this.page.actionBarHidden = true;
-        this.page.backgroundImage = "res://background";        
+        this.page.backgroundImage = "res://sidif_logo";        
     }
 
     public get message(): string {
