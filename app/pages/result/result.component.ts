@@ -1,31 +1,31 @@
-import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
-import { Result } from "../../shared/result/result";
-import { ResultListService } from "../../shared/result/result-list.service";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
+
+class Country {
+    constructor(public name: string) { }
+}
+
+let europianCountries = ["Austria", "Belgium", "Bulgaria", "Croatia", "Cyprus", "Czech Republic",
+    "Denmark", "Estonia", "Finland", "France", "Germany", "Greece", "Hungary", "Ireland", "Italy",
+    "Latvia", "Lithuania", "Luxembourg", "Malta", "Netherlands", "Poland", "Portugal", "Romania", "Slovakia",
+    "Slovenia", "Spain", "Sweden", "United Kingdom"];
 
 @Component({
-  selector: "result",
-  templateUrl: "pages/result/result.html",
-  styleUrls: ["pages/result/result-common.css", "pages/result/result.css"],
-  providers: [ResultListService]
+    selector: "result",
+    templateUrl: "pages/result/result.html",
+    styleUrls: ["pages/result/result-common.css", "pages/result/result.css"],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ResultComponent implements OnInit {
-  resultList: Array<Result> = [];
-  isLoading = false;
+export class ResultComponent {
+    public countries: Array<Country>;
 
-  constructor(private resultListService: ResultListService) {}
+    constructor() {
+        this.countries = [];
 
-
-  ngOnInit() {
-  this.isLoading = true;
-  this.resultListService.load()
-    .subscribe(loadedResults => {
-      console.log("entra1" + loadedResults);
-      loadedResults.forEach((resultObject) => {
-        console.log("entra2" + loadedResults);
-        this.resultList.unshift(resultObject);
-      });
-      this.isLoading = false;
-    });
+        for (let i = 0; i < europianCountries.length; i++) {
+            this.countries.push(new Country(europianCountries[i]));
+        }
+    }
+    public onItemTap(args) {
+        console.log("Item Tapped at cell index: " + args.index);
+    }
 }
-}
-

@@ -15,7 +15,6 @@ import { View } from "ui/core/view";
 export class SearchComponent implements OnInit {
     user: User;
     public counter: number = 1;
-    byCode = true;
 
     @ViewChild("container") container: ElementRef; //angular ViewChild decorador, crea una nueva propiedad que aputa a stacklauout
 
@@ -29,23 +28,19 @@ export class SearchComponent implements OnInit {
 
     public get message(): string {
         if (this.counter == 1) {
-            return "Realiza la búsqueda por código o por nombre.";
+            return "Realiza la búsqueda por Identificación o por Nombres.";
         } else {
             return "No se encontró coincidencia!";
         }
     }
     submit() {
-        if (!this.user.isValidCode()) {
+       /* if (!this.user.isValidCode()) {
             alert("El codigo esta entre [3,15].");
             return;
-        }
+        }*/
         alert("Ingresaste: " + this.user.codigo);
         this.counter = 0;
-        if (this.byCode) {
-            this.searchCodigo();
-        } else {
-            this.searchNombre();
-        }
+        this.searchNombre();
     }
     searchCodigo() {
         // TODO: Define
@@ -59,14 +54,5 @@ export class SearchComponent implements OnInit {
         this.router.navigate(["/result"]);
         this.userService.search(this.user);
     }
-    toggleDisplay() {
-        this.byCode = !this.byCode;
-        let container = <View>this.container.nativeElement;
-        container.animate({
-            backgroundColor: this.byCode ? new Color("white") : new Color("#30bcff"),
-            duration: 200
-        });
-
-
-    }
+   
 }

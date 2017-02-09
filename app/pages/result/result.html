@@ -1,9 +1,7 @@
-<GridLayout>
-    <Label text="SIDIFAPP" class="h2 text-center"></Label>
-    <ListView [items]="resultList" class="small-spacing">
-        <template let-item="item">
-            <Label [text]="item.name" class="medium-spacing"></Label>
-        </template>
-    </ListView>
-    <ActivityIndicator [busy]="isLoading" [visibility]="isLoading ? 'visible' : 'collapse'" row="1" horizontalAlignment="center" verticalAlignment="center"></ActivityIndicator>
-</GridLayout>
+<ListView [items]="countries" class="list-group" (itemTap)="onItemTap($event)">
+    <template let-country="item" let-i="index" let-odd="odd" let-even="even">
+        <GridLayout class="list-group-item">
+            <Label [text]="country.name"></Label>
+        </GridLayout>
+    </template>
+</ListView>

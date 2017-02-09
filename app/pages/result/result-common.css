@@ -1,5 +1,8 @@
 ListView {
-  opacity: 0;
+  opacity: 0.5;
+}
+Label{
+  color: black;
 }
 .visible {
   animation-name: show;
@@ -20,11 +23,34 @@ ListView {
   margin-right: 5;
 }
 TextField {
-  color: white;
+  color: black;
 }
 .delete-container {
   background-color: #CB1D00;
   padding: 5;
   height: 20;
   margin-right: 8;
+}
+.third {
+    background-color: #0099CC;
+    color: whitesmoke;
+    text-align: left;
+    vertical-align: center;
+}
+
+.header {
+    background-color: #8C489F;
+    color: whitesmoke;
+    border-radius: 3;
+}
+
+.footer {
+    background-color: #8C489F;
+    color: whitesmoke;
+    border-radius: 3;
+}
+
+.item {
+    text-align: left;
+    vertical-align: center;
 }

@@ -1,2 +1,3 @@
 # AppNativeScriptAngular2
-Retrieve http resources app with Angular 2 &amp; NativeScript framework
+Http resources retriver App with Angular 2 &amp; NativeScript framework
+

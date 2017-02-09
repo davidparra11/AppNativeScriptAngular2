@@ -20,13 +20,13 @@ export class LoginComponent implements OnInit {
     user: User;
     public counter: number = 1;
     messageButton: string = "Inicio de Sesion";
+    isAuthenticating = false; //prevenir el multitoque
 
     @ViewChild("container") container: ElementRef; //angular ViewChild decorador, crea una nueva propiedad que aputa a stacklauout
     @ViewChild("initialContainer") initialContainer: ElementRef;
     @ViewChild("mainContainer") mainContainer: ElementRef;
     @ViewChild("logoContainer") logoContainer: ElementRef;
     @ViewChild("formControls") formControls: ElementRef;
-    @ViewChild("signUpStack") signUpStack: ElementRef;
     @ViewChild("password") password: ElementRef;
 
 
@@ -80,7 +80,6 @@ export class LoginComponent implements OnInit {
     let mainContainer = <View>this.mainContainer.nativeElement;
     let logoContainer = <View>this.logoContainer.nativeElement;
     let formControls = <View>this.formControls.nativeElement;
-    let signUpStack = <View>this.signUpStack.nativeElement;
     let animations = [];
 
     // Fade out the initial content over one half second
@@ -100,7 +99,6 @@ export class LoginComponent implements OnInit {
       animations.push({ target: logoContainer, opacity: 1, duration: 500 });
 
       // Slide up the form controls and sign up container.
-      animations.push({ target: signUpStack, translate: { x: 0, y: 0 }, opacity: 1, delay: 500, duration: 150 });
       animations.push({ target: formControls, translate: { x: 0, y: 0 }, opacity: 1, delay: 650, duration: 150 });
 
       // Kick off the animation queue
