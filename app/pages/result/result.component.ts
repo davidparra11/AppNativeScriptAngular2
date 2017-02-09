@@ -1,13 +1,14 @@
 import { Component, ChangeDetectionStrategy } from "@angular/core";
 
 class Country {
-    constructor(public name: string) { }
+    constructor(public title: string, public src: string) { }
 }
 
-let europianCountries = ["Austria", "Belgium", "Bulgaria", "Croatia", "Cyprus", "Czech Republic",
-    "Denmark", "Estonia", "Finland", "France", "Germany", "Greece", "Hungary", "Ireland", "Italy",
-    "Latvia", "Lithuania", "Luxembourg", "Malta", "Netherlands", "Poland", "Portugal", "Romania", "Slovakia",
-    "Slovenia", "Spain", "Sweden", "United Kingdom"];
+let europianCountries = [["Title1","http://pngimg.com/upload/face_PNG5660.png"],
+["Title2","http://pngimg.com/upload/face_PNG5660.png"],
+["Title3","http://pngimg.com/upload/face_PNG5660.png"],
+["Title4","http://pngimg.com/upload/face_PNG5660.png"]
+];
 
 @Component({
     selector: "result",
@@ -15,6 +16,7 @@ let europianCountries = ["Austria", "Belgium", "Bulgaria", "Croatia", "Cyprus", 
     styleUrls: ["pages/result/result-common.css", "pages/result/result.css"],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
+
 export class ResultComponent {
     public countries: Array<Country>;
 
@@ -22,9 +24,10 @@ export class ResultComponent {
         this.countries = [];
 
         for (let i = 0; i < europianCountries.length; i++) {
-            this.countries.push(new Country(europianCountries[i]));
+            this.countries.push(new Country(europianCountries[i][0], europianCountries[i][1]));
         }
     }
+
     public onItemTap(args) {
         console.log("Item Tapped at cell index: " + args.index);
     }

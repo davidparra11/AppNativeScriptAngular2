@@ -37,7 +37,6 @@ TextField {
     text-align: left;
     vertical-align: center;
 }
-
 .header {
     background-color: #8C489F;
     color: whitesmoke;
@@ -53,4 +52,8 @@ TextField {
 .item {
     text-align: left;
     vertical-align: center;
+}
+.imagen-row {
+    max-height: 50;
+    height: 45;    
 }
