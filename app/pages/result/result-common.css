@@ -54,6 +54,6 @@ TextField {
     vertical-align: center;
 }
 .imagen-row {
-    max-height: 50;
-    height: 45;    
+    max-height: 100;
+   
 }

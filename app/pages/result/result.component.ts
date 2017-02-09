@@ -1,13 +1,15 @@
 import { Component, ChangeDetectionStrategy } from "@angular/core";
 
+var utilityModule = require("utils/utils");
+
 class Country {
     constructor(public title: string, public src: string) { }
 }
 
-let europianCountries = [["Title1","http://pngimg.com/upload/face_PNG5660.png"],
-["Title2","http://pngimg.com/upload/face_PNG5660.png"],
-["Title3","http://pngimg.com/upload/face_PNG5660.png"],
-["Title4","http://pngimg.com/upload/face_PNG5660.png"]
+let europianCountries = [["Juan Santos","http://pngimg.com/upload/face_PNG5660.png"],
+["Barack Obama","http://pngimg.com/upload/face_PNG5660.png"],
+["OTro","http://pngimg.com/upload/face_PNG5660.png"],
+["OTro","http://pngimg.com/upload/face_PNG5660.png"]
 ];
 
 @Component({
@@ -30,5 +32,9 @@ export class ResultComponent {
 
     public onItemTap(args) {
         console.log("Item Tapped at cell index: " + args.index);
+    }
+
+    public showNew(args) {
+        utilityModule.openUrl("http://www.noticiaslaft.com/?s=" + args);
     }
 }
