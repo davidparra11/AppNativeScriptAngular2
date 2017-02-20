@@ -16,7 +16,7 @@ export class UserService {
     headers.append("Content-Type", "application/json");
 
     return this.http.post(
-      Config.apiUrl + "Users",
+      Config.token + "Users",
       JSON.stringify({
         Username: user.codigo,
         Email: user.codigo,
@@ -32,7 +32,7 @@ export class UserService {
   headers.append("Content-Type", "application/json");
 
   return this.http.post(
-    Config.apiUrl + "oauth/token",
+    Config.token + "oauth/token",
     JSON.stringify({
       username: user.nombre,
       password: user.codigo,

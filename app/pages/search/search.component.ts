@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from "@angular/core"; //OnInit es una clase interfaz de typescript
-import { User } from "../../shared/user/user";
-import { UserService } from "../../shared/user/user.service";
+import { Search } from "../../shared/search/search";
+import { SearchService } from "../../shared/search/search.service";
 import { Router } from "@angular/router";
 import { Page } from "ui/page";
 import { Color } from "color";
@@ -8,18 +8,28 @@ import { View } from "ui/core/view";
 
 @Component({
     selector: "my-app",
-    providers: [UserService],
+    providers: [SearchService],
     templateUrl: "pages/search/search.html",
     styleUrls: ["pages/search/search-common.css", "pages/search/search.css"]
 })
 export class SearchComponent implements OnInit {
-    user: User;
+    searcher: Search;
     public counter: number = 1;
+    idPart = "0";
+    namePart = "JUAN%20MANUEL%20SANTOS";
+    incluirAlias = "0";
+    paginaActual = "1";
+    tamanoPagina = "1";
+    usuarioID = "1";
+    consultaID = "0";
 
+
+    
     @ViewChild("container") container: ElementRef; //angular ViewChild decorador, crea una nueva propiedad que aputa a stacklauout
 
-    constructor(private router: Router, private userService: UserService, private page: Page) {
-        this.user = new User();
+    constructor(private router: Router, private searchService: SearchService, private page: Page) {
+        this.searcher = new Search(this.idPart, this.namePart, this.incluirAlias,
+        this.paginaActual, this.tamanoPagina, this.usuarioID, this.consultaID);
     }
     ngOnInit() {
         this.page.actionBarHidden = true;
@@ -38,21 +48,23 @@ export class SearchComponent implements OnInit {
             alert("El codigo esta entre [3,15].");
             return;
         }*/
-        alert("Ingresaste: " + this.user.codigo);
+       // alert("Ingresaste: " + this.user.codigo);
         this.counter = 0;
-        this.searchNombre();
+        //this.searchNombre();
+        this.searchCodigo();
     }
+    
     searchCodigo() {
         // TODO: Define
-        this.userService.search(this.user)
+        this.searchService.search(this.searcher)
             .subscribe(
             () => this.router.navigate(["/result"]),
-            (error) => alert("Unfortunately we could not find your account.")
+            (error) => alert("Unfortunately we could not find your search.")
             );
     }
     searchNombre() {
         this.router.navigate(["/result"]);
-        this.userService.search(this.user);
+       // this.userService.search(this.user);
     }
    
 }

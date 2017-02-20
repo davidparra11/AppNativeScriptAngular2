@@ -6,7 +6,7 @@ class Country {
     constructor(public title: string, public src: string) { }
 }
 
-let europianCountries = [["Juan Santos","http://pngimg.com/upload/face_PNG5660.png"],
+let europianCountries = [["Juan Santos","http://www.las2orillas.co/wp-content/uploads/2014/05/JuanManuel-Santos.png"],
 ["Barack Obama","http://pngimg.com/upload/face_PNG5660.png"],
 ["OTro","http://pngimg.com/upload/face_PNG5660.png"],
 ["OTro","http://pngimg.com/upload/face_PNG5660.png"]

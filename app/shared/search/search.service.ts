@@ -4,20 +4,21 @@ import { Observable } from "rxjs/Rx";
 import "rxjs/add/operator/map";
 
 import { Config } from "../config";
-import { Result } from "./result";
+import { Search } from "./search";
+import { Result } from "../result/result";
 
 @Injectable()
-export class ResultListService {
+export class SearchService {
   constructor(private http: Http) {}
   
   
 
   
-  load() {
+  search(searcher: Search) {
     let headers = new Headers();
-    headers.append("Authorization", "Bearer ");  // + Config.token
-    console.log("entra");
-    return this.http.get("Results", {
+    headers.append("Authorization", "Bearer "); // + Config.token
+    console.log("entra: " + searcher.apiUrl);
+    return this.http.get(searcher.apiUrl, {
       headers: headers
     })
     .map(res => res.json()) //RxJS map()para crear un nuevo array con los resultados (Result objects) de la llamada de la funcion.
