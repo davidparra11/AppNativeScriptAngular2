@@ -21,11 +21,11 @@ export class ResultListService {
       headers: headers
     })
     .map(res => res.json()) //RxJS map()para crear un nuevo array con los resultados (Result objects) de la llamada de la funcion.
-    .map(data => {
-      console.log("resultado de DATA: " + data);
+    .do(data => {
+      console.log("resultado de DATA: " + data.Resultados);
       let resultList = [];
       data.Result.forEach((result) => {
-        resultList.push(new Result(result.Id, result.Name));
+        resultList.push(new Result("a","q","f","a","q","f","a","q","f"));
       });
       console.log("resultado de result: " + resultList);
       return resultList;

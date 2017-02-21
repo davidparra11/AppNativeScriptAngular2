@@ -1,10 +1,17 @@
 import { Component, ElementRef, OnInit, ViewChild } from "@angular/core"; //OnInit es una clase interfaz de typescript
 import { Search } from "../../shared/search/search";
 import { SearchService } from "../../shared/search/search.service";
-import { Router } from "@angular/router";
+import { Router, NavigationExtras } from "@angular/router";
 import { Page } from "ui/page";
 import { Color } from "color";
 import { View } from "ui/core/view";
+
+import { Result } from "../../shared/result/result";
+
+export class PepsResults3 {
+    static arrayPersonas: any;
+    constructor(public title: string, public src: string) { }
+}
 
 @Component({
     selector: "my-app",
@@ -58,12 +65,16 @@ export class SearchComponent implements OnInit {
         // TODO: Define
         this.searchService.search(this.searcher)
             .subscribe(
-            () => this.router.navigate(["/result"]),
+            (val) => {this.router.navigate(["/result"]);
+                    console.log("resultado recuperado" + val);
+                    this.searchNombre(val);
+                //PepsResults3.arrayPersonas = val},
             (error) => alert("Unfortunately we could not find your search.")
             );
     }
-    searchNombre() {
-        this.router.navigate(["/result"]);
+    searchNombre(val) {
+        let navigationExtras:  NavigationExtras = [val];
+        this.router.navigate(["/result"], navigationExtras);
        // this.userService.search(this.user);
     }
    

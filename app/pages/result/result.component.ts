@@ -1,8 +1,13 @@
-import { Component, ChangeDetectionStrategy } from "@angular/core";
+import { Component, ChangeDetectionStrategy, OnInit } from "@angular/core";
+import { Page } from "ui/page";
+import {ActivatedRoute} from "@angular/router";
+import { Result } from "../../shared/result/result";
+import { PepsResults3 } from "../search/search.component";
 
 var utilityModule = require("utils/utils");
 
-class Country {
+export class PepsResults {
+    static arrayPersonas: Array<Result>;
     constructor(public title: string, public src: string) { }
 }
 
@@ -20,15 +25,34 @@ let europianCountries = [["Juan Santos","http://www.las2orillas.co/wp-content/up
 })
 
 export class ResultComponent {
-    public countries: Array<Country>;
+    public arrayDePersonas = [];
+    public pepsResultsArray = PepsResults3.arrayPersonas;
+    
+    constructor(private page: Page, private route: ActivatedRoute) {
 
-    constructor() {
-        this.countries = [];
+        this.route.queryParams.subscribe(params => {
 
-        for (let i = 0; i < europianCountries.length; i++) {
-            this.countries.push(new Country(europianCountries[i][0], europianCountries[i][1]));
+            for (let i = 0; i < params.length; i++) {
+            this.pepsResultsArray.push(new Result(europianCountries[i][0], europianCountries[i][1]));
         }
+           
+        });
+            
+        /*for (let i = 0; i < this.pepsResultsArray.length; i++) {
+            this.pepsResultsArray.push(new Result(europianCountries[i][0], europianCountries[i][1]));
+        }
+
+        
+        
+        */
+
+        
     }
+
+    ngOnInit() {
+    this.page.actionBarHidden = true;
+    console.log("hola mundoo" +  PepsResults3.arrayPersonas);
+  }
 
     public onItemTap(args) {
         console.log("Item Tapped at cell index: " + args.index);
