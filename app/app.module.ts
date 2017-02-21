@@ -4,7 +4,7 @@ import { NativeScriptHttpModule } from "nativescript-angular/http";  //is a Nati
 //a module that declares all of Angular’s HTTP-based services—including the Http service that UserService uses.
 import { NativeScriptModule } from "nativescript-angular/platform";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
-
+import { Data } from "./shared/data";
 
 import { AppComponent } from "./app.component";
 import { routes, navigatableComponents } from "./app.routing";
@@ -20,7 +20,8 @@ import { routes, navigatableComponents } from "./app.routing";
         NativeScriptRouterModule,
         NativeScriptRouterModule.forRoot(routes)
     ],
-    schemas: [NO_ERRORS_SCHEMA]
+    schemas: [NO_ERRORS_SCHEMA],
+    providers: [Data]
 })
 export class AppModule { }
 

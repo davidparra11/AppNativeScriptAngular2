@@ -7,6 +7,7 @@ import { Color } from "color";
 import { View } from "ui/core/view";
 
 import { Result } from "../../shared/result/result";
+import { Data } from "../../shared/data";
 
 export class PepsResults3 {
     static arrayPersonas: any;
@@ -34,7 +35,7 @@ export class SearchComponent implements OnInit {
     
     @ViewChild("container") container: ElementRef; //angular ViewChild decorador, crea una nueva propiedad que aputa a stacklauout
 
-    constructor(private router: Router, private searchService: SearchService, private page: Page) {
+    constructor(private router: Router, private searchService: SearchService, private page: Page, private data: Data) {
         this.searcher = new Search(this.idPart, this.namePart, this.incluirAlias,
         this.paginaActual, this.tamanoPagina, this.usuarioID, this.consultaID);
     }
@@ -67,14 +68,14 @@ export class SearchComponent implements OnInit {
             .subscribe(
             (val) => {this.router.navigate(["/result"]);
                     console.log("resultado recuperado" + val);
-                    this.searchNombre(val);
+                    this.searchNombre();
+                    this.data.storage = val; },
                 //PepsResults3.arrayPersonas = val},
             (error) => alert("Unfortunately we could not find your search.")
             );
     }
-    searchNombre(val) {
-        let navigationExtras:  NavigationExtras = [val];
-        this.router.navigate(["/result"], navigationExtras);
+    searchNombre() {
+        this.router.navigate(["/result"]);
        // this.userService.search(this.user);
     }
    
