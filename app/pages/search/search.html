@@ -1,8 +1,8 @@
 <StackLayout class="p-20" #container>
 
-    <TextField hint="Identificación" keyboardType="number" [(ngModel)]="user.codigo"
+    <TextField hint="Identificación" keyboardType="number" 
       autocorrect="false" autocapitalizationType="none"></TextField>
-    <TextField hint="Nombres o razón social " keyboardType="search" [(ngModel)]="user.nombre"
+    <TextField hint="Nombres o razón social " keyboardType="search" 
       autocorrect="true" autocapitalizationType="none"></TextField>
     <Button text="Consultar" class="submit-button" (tap)="submit()"></Button>
     <Label [text]="message" class="h2 text-center" textWrap="true"></Label>
