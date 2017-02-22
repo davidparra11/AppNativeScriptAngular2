@@ -6,5 +6,5 @@
       autocorrect="true" autocapitalizationType="none"></TextField>
     <Button text="Consultar" class="submit-button" (tap)="submit()"></Button>
     <Label [text]="message" class="h2 text-center" textWrap="true"></Label>
-    
+    <ActivityIndicator [busy]="isLoading" [visibility]="isLoading ? 'visible' : 'collapse'" row="1" horizontalAlignment="center" verticalAlignment="center"></ActivityIndicator>
 </StackLayout>
