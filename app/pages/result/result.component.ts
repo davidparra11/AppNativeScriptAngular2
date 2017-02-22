@@ -25,7 +25,7 @@ let europianPersonas = [["Juan Santos","http://www.las2orillas.co/wp-content/upl
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class ResultComponent {
+export class ResultComponent implements OnInit {
     public arrayDePersonas : any;
     public test : any;
     public Personas: Array<Country>;
@@ -35,10 +35,6 @@ export class ResultComponent {
 
         this.countries = [];
  
-         for (let i = 0; i < europianPersonas.length; i++) {
-             this.countries.push(new Country(europianPersonas[i][0], europianPersonas[i][1]));
-         }
-
 
 
        // this.test.push({"NombreCompleto": "david"});
@@ -49,8 +45,8 @@ export class ResultComponent {
 
                  this.Personas = [];
 
-        for (let i = 0; i < europianPersonas.length; i++) {
-            this.Personas.push(new Country(europianPersonas[i][0], europianPersonas[i][1]));
+        for (let i = 0; i < data.storage.length; i++) {
+            this.countries.push(new Country(data.storage[i].NombreCompleto, "http://pngimg.com/upload/face_PNG5660.png"));
         }
                 
        /*              
@@ -61,6 +57,10 @@ export class ResultComponent {
           
 
         
+    }
+
+     ngOnInit() {
+        this.page.actionBarHidden = true;     
     }
 
     public onItemTap(args) {
