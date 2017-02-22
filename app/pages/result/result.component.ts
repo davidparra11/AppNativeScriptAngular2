@@ -46,7 +46,7 @@ export class ResultComponent implements OnInit {
                  this.Personas = [];
 
         for (let i = 0; i < data.storage.length; i++) {
-            this.countries.push(new Country(data.storage[i].NombreCompleto, "http://pngimg.com/upload/face_PNG5660.png"));
+            this.Personas.push(new Country(data.storage[i].NombreCompleto, "http://pngimg.com/upload/face_PNG5660.png"));
         }
                 
        /*              

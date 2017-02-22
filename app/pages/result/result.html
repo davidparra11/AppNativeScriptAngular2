@@ -1,4 +1,4 @@
-<ListView [items]="countries" class="list-group" (itemTap)="onItemTap($event)">
+<ListView [items]="Personas" class="list-group" (itemTap)="onItemTap($event)">
     <template let-country="item" let-i="index" let-odd="odd" let-even="even">
         <GridLayout class="list-group-item" columns="*,2*" rows="2*,3*" style.backgroundColor="lightgray">
             <Image [src]="country.src" col="0" row="0" stretch="aspectFill" class="imagen-row"></Image>

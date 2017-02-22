@@ -19,6 +19,7 @@ import { Data } from "../../shared/data";
 
 export class SearchComponent implements OnInit {
     searcher: Search;
+    isLoading = false;
     public counter: number = 1;
     idPart = "0";
     namePart = "JUAN%20MANUEL%20SANTOS";
@@ -27,16 +28,16 @@ export class SearchComponent implements OnInit {
     tamanoPagina = "1";
     usuarioID = "1";
     consultaID = "0";
-    
+
     @ViewChild("container") container: ElementRef; //angular ViewChild decorador, crea una nueva propiedad que aputa a stacklauout
 
     constructor(private router: Router, private searchService: SearchService, private page: Page, private data: Data) {
         this.searcher = new Search(this.idPart, this.namePart, this.incluirAlias,
-        this.paginaActual, this.tamanoPagina, this.usuarioID, this.consultaID);
+            this.paginaActual, this.tamanoPagina, this.usuarioID, this.consultaID);
     }
     ngOnInit() {
         this.page.actionBarHidden = true;
-        this.page.backgroundImage = "res://sidif_logo";        
+        this.page.backgroundImage = "res://sidif_logo";
     }
 
     public get message(): string {
@@ -47,31 +48,35 @@ export class SearchComponent implements OnInit {
         }
     }
     submit() {
-       /* if (!this.user.isValidCode()) {
-            alert("El codigo esta entre [3,15].");
-            return;
-        }*/
-       // alert("Ingresaste: " + this.user.codigo);
+        this.isLoading = true;
+        /* if (!this.user.isValidCode()) {
+             alert("El codigo esta entre [3,15].");
+             return;
+         }*/
+        // alert("Ingresaste: " + this.user.codigo);
         this.counter = 0;
         //this.searchNombre();
         this.searchCodigo();
     }
-    
+
     searchCodigo() {
         // TODO: Define
         this.searchService.search(this.searcher)
             .subscribe(
-            (val) => {this.router.navigate(["/result"]);
-                    console.log("resultado recuperado" + val);
-                    this.searchNombre();
-                    this.data.storage = val; },
-                //PepsResults3.arrayPersonas = val},
+            (val) => {
+                this.router.navigate(["/result"]);
+                console.log("resultado recuperado" + val);
+                this.data.storage = val;
+                this.isLoading = false;
+                this.searchNombre();
+            },
+            //PepsResults3.arrayPersonas = val},
             (error) => alert("Unfortunately we could not find your search.")
             );
     }
     searchNombre() {
         this.router.navigate(["/result"]);
-       // this.userService.search(this.user);
+        // this.userService.search(this.user);
     }
-   
+
 }
