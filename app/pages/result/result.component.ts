@@ -1,16 +1,12 @@
 import { Component, ChangeDetectionStrategy, OnInit } from "@angular/core";
 import { Page } from "ui/page";
-import {ActivatedRoute} from "@angular/router";
+import { ActivatedRoute } from "@angular/router";
 import { Result } from "../../shared/result/result";
-import { PepsResults3 } from "../search/search.component";
 import { Data } from "../../shared/data";
 
 var utilityModule = require("utils/utils");
 
-export class PepsResults {
-    static arrayPersonas: Array<Result>;
-    constructor(public title: string, public src: string) { }
-}
+
 
 class Country {
     constructor(public title: string, public src: string) { }
@@ -33,10 +29,20 @@ export class ResultComponent {
     public arrayDePersonas : any;
     public test : any;
     public Personas: Array<Country>;
-   // public pepsResultsArray = PepsResults3.arrayPersonas;
+     public countries: Array<Country>;
     
     constructor(private page: Page, private route: ActivatedRoute, private data: Data) {
+
+        this.countries = [];
+ 
+         for (let i = 0; i < europianPersonas.length; i++) {
+             this.countries.push(new Country(europianPersonas[i][0], europianPersonas[i][1]));
+         }
+
+
+
        // this.test.push({"NombreCompleto": "david"});
+
        this.test = data.storage;
                 console.log("DATA" + JSON.stringify(this.data.storage));
                 this.arrayDePersonas  = data.storage;
@@ -47,26 +53,15 @@ export class ResultComponent {
             this.Personas.push(new Country(europianPersonas[i][0], europianPersonas[i][1]));
         }
                 
-       /* this.route.queryParams.subscribe(params => {
-
-            for (let i = 0; i < params.length; i++) {
-            this.pepsResultsArray.push(new Result(europianPersonas[i][0], europianCountries[i][1]));
-        }
-           
-        });
-             
+       /*              
         for (let i = 0; i < this.data.storage.length; i++) {
             this.pepsResultsArray.push(new Result(europianCountries[i][0], europianCountries[i][1]));
         }
 */
-        
-        
-       
+          
 
         
     }
-
-    
 
     public onItemTap(args) {
         console.log("Item Tapped at cell index: " + args.index);

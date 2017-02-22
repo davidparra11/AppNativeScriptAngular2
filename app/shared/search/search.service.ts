@@ -6,13 +6,6 @@ import "rxjs/add/operator/map";
 import { Config } from "../config";
 import { Search } from "./search";
 import { Result } from "../result/result";
-import { PepsResults } from "../../pages/result/result.component";
-
-export class PepsResults2 {
-    static arrayPersonas: Array<Result>;
-    constructor(public title: string, public src: string) { }
-}
-
 
 @Injectable()
 export class SearchService {  
@@ -32,9 +25,7 @@ export class SearchService {
       data.Resultados.forEach((result) => {
         console.log("resultado de DATA2: " + JSON.stringify(result.NombreCompleto));
         resultList.push(new Result("a","b","c", result.NombreCompleto,"q","f","a",result.Relacionado_Con,"f"));
-       // PepsResults2.arrayPersonas.push(new Result("a","b","c", result.NombreCompleto,"q","f","a",result.Relacionado_Con,"f"));
-        //console.log("PepsResults2.arrayPersonas: " + JSON.stringify(PepsResults2.arrayPersonas));
-      });
+       });
       console.log("resultado de result: " + resultList);
       return resultList;
     })

@@ -10,7 +10,7 @@ export const routes = [
 ];
 
 export const navigatableComponents = [
-  ResultComponent,
   LoginComponent,
-  SearchComponent  
-];
+  SearchComponent,
+  ResultComponent
+  ];

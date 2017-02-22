@@ -9,10 +9,6 @@ import { View } from "ui/core/view";
 import { Result } from "../../shared/result/result";
 import { Data } from "../../shared/data";
 
-export class PepsResults3 {
-    static arrayPersonas: any;
-    constructor(public title: string, public src: string) { }
-}
 
 @Component({
     selector: "my-app",
@@ -20,6 +16,7 @@ export class PepsResults3 {
     templateUrl: "pages/search/search.html",
     styleUrls: ["pages/search/search-common.css", "pages/search/search.css"]
 })
+
 export class SearchComponent implements OnInit {
     searcher: Search;
     public counter: number = 1;
@@ -30,8 +27,6 @@ export class SearchComponent implements OnInit {
     tamanoPagina = "1";
     usuarioID = "1";
     consultaID = "0";
-
-
     
     @ViewChild("container") container: ElementRef; //angular ViewChild decorador, crea una nueva propiedad que aputa a stacklauout
 

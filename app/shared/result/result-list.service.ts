@@ -25,7 +25,7 @@ export class ResultListService {
       console.log("resultado de DATA: " + data.Resultados);
       let resultList = [];
       data.Result.forEach((result) => {
-        resultList.push(new Result("a","q","f","a","q","f","a","q","f"));
+       //Todo resultList.push(new Result("a","q","f","a","q","f","a","q","f"));
       });
       console.log("resultado de result: " + resultList);
       return resultList;
