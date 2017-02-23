@@ -35,8 +35,6 @@ export class ResultComponent implements OnInit {
 
         this.countries = [];
  
-
-
        // this.test.push({"NombreCompleto": "david"});
 
        this.test = data.storage;
