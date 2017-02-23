@@ -6,10 +6,8 @@ import { Data } from "../../shared/data";
 
 var utilityModule = require("utils/utils");
 
-
-
-class Country {
-    constructor(public title: string, public src: string) { }
+class Personas {
+    constructor(public title: string, public src: string, public relacionado_Con: string, public tipo_Lista: string ) { }
 }
 
 let europianPersonas = [["Juan Santos","http://www.las2orillas.co/wp-content/uploads/2014/05/JuanManuel-Santos.png"],
@@ -28,13 +26,10 @@ let europianPersonas = [["Juan Santos","http://www.las2orillas.co/wp-content/upl
 export class ResultComponent implements OnInit {
     public arrayDePersonas : any;
     public test : any;
-    public Personas: Array<Country>;
-     public countries: Array<Country>;
+    public Personas: Array<Personas>;
     
     constructor(private page: Page, private route: ActivatedRoute, private data: Data) {
 
-        this.countries = [];
- 
        // this.test.push({"NombreCompleto": "david"});
 
        this.test = data.storage;
@@ -44,7 +39,7 @@ export class ResultComponent implements OnInit {
                  this.Personas = [];
 
         for (let i = 0; i < data.storage.length; i++) {
-            this.Personas.push(new Country(data.storage[i].NombreCompleto, "http://pngimg.com/upload/face_PNG5660.png"));
+            this.Personas.push(new Personas(data.storage[i].NombreCompleto, "http://pngimg.com/upload/face_PNG5660.png", data.storage[i].Relacionado_Con, data.storage[i].Tipo_Lista));
         }
                 
        /*              
