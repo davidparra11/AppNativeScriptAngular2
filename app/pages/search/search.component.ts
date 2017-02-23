@@ -8,6 +8,7 @@ import { View } from "ui/core/view";
 
 import { Result } from "../../shared/result/result";
 import { Data } from "../../shared/data";
+import { Searchform } from "../../shared/search/search-form";
 
 
 @Component({
@@ -20,6 +21,7 @@ import { Data } from "../../shared/data";
 export class SearchComponent implements OnInit {
     searcher: Search;
     isLoading = false;
+    searchForm: Searchform;
     public counter: number = 1;
     idPart = "0";
     namePart = "JUAN%20MANUEL%20SANTOS";
@@ -32,8 +34,7 @@ export class SearchComponent implements OnInit {
     @ViewChild("container") container: ElementRef; //angular ViewChild decorador, crea una nueva propiedad que aputa a stacklauout
 
     constructor(private router: Router, private searchService: SearchService, private page: Page, private data: Data) {
-        this.searcher = new Search(this.idPart, this.namePart, this.incluirAlias,
-            this.paginaActual, this.tamanoPagina, this.usuarioID, this.consultaID);
+        this.searchForm = new Searchform();
     }
     ngOnInit() {
         this.page.actionBarHidden = true;
@@ -49,10 +50,15 @@ export class SearchComponent implements OnInit {
     }
     submit() {
         this.isLoading = true;
+        var re = / /gi;
+        var newnamePart = this.searchForm.nombre.replace(re, "%20");
+        console.log(newnamePart);
         /* if (!this.user.isValidCode()) {
              alert("El codigo esta entre [3,15].");
              return;
          }*/
+        this.searcher = new Search(this.idPart, newnamePart, this.incluirAlias,
+            this.paginaActual, this.tamanoPagina, this.usuarioID, this.consultaID);
         // alert("Ingresaste: " + this.user.codigo);
         this.counter = 0;
         //this.searchNombre();
