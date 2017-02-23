@@ -60,7 +60,7 @@ export class ResultComponent implements OnInit {
     }
 
      ngOnInit() {
-        this.page.actionBarHidden = true;     
+        this.page.actionBarHidden = false;     
     }
 
     public onItemTap(args) {

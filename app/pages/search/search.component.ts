@@ -21,13 +21,14 @@ import { Searchform } from "../../shared/search/search-form";
 export class SearchComponent implements OnInit {
     searcher: Search;
     isLoading = false;
+    isAuthenticating = false;
     searchForm: Searchform;
     public counter: number = 1;
     idPart = "0";
     namePart = "JUAN%20MANUEL%20SANTOS";
     incluirAlias = "0";
     paginaActual = "1";
-    tamanoPagina = "1";
+    tamanoPagina = "10";
     usuarioID = "1";
     consultaID = "0";
 
@@ -37,8 +38,7 @@ export class SearchComponent implements OnInit {
         this.searchForm = new Searchform();
     }
     ngOnInit() {
-        this.page.actionBarHidden = true;
-        this.page.backgroundImage = "res://sidif_logo";
+        this.page.actionBarHidden = false;
     }
 
     public get message(): string {
@@ -50,6 +50,7 @@ export class SearchComponent implements OnInit {
     }
     submit() {
         this.isLoading = true;
+        this.isAuthenticating = true;
         var re = / /gi;
         var newnamePart = this.searchForm.nombre.replace(re, "%20");
         console.log(newnamePart);
@@ -73,7 +74,7 @@ export class SearchComponent implements OnInit {
                 this.router.navigate(["/result"]);
                 console.log("resultado recuperado" + val);
                 this.data.storage = val;
-                this.isLoading = false;
+                
                 this.searchNombre();
             },
             //PepsResults3.arrayPersonas = val},
@@ -82,6 +83,8 @@ export class SearchComponent implements OnInit {
     }
     searchNombre() {
         this.router.navigate(["/result"]);
+        this.isLoading = false;
+        this.isAuthenticating = false;
         // this.userService.search(this.user);
     }
 
