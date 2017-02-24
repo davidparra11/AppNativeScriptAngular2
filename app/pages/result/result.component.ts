@@ -1,5 +1,6 @@
 import { Component, ChangeDetectionStrategy, OnInit } from "@angular/core";
 import { Page } from "ui/page";
+import { EventData } from 'data/observable';
 import { ActivatedRoute } from "@angular/router";
 import { Result } from "../../shared/result/result";
 import { Data } from "../../shared/data";
@@ -26,7 +27,8 @@ let europianPersonas = [["Juan Santos","http://www.las2orillas.co/wp-content/upl
 export class ResultComponent implements OnInit {
     public arrayDePersonas : any;
     public test : any;
-    public Personas: Array<Personas>;
+    public Personass: Array<Personas>;
+    public Personas: Personas[] = [];
     
     constructor(private page: Page, private route: ActivatedRoute, private data: Data) {
 
@@ -48,7 +50,6 @@ export class ResultComponent implements OnInit {
         }
 */
           
-
         
     }
 
@@ -58,9 +59,29 @@ export class ResultComponent implements OnInit {
 
     public onItemTap(args) {
         console.log("Item Tapped at cell index: " + args.index);
+        console.log("Item Tapped at cell index: " + args.view);
     }
 
-    public showNew(args) {
+   /* public showNew(args) {
         utilityModule.openUrl("http://www.noticiaslaft.com/?s=" + args);
     }
+    public onLoadMoreItems(args){
+        console.log("IDATOS_DATOS " + args.eventName);
+        console.log("IDATOS_DATOS " + args.object);
+        this.Personas = [];
+
+      
+            this.Personas.push(new Personas("pedro", "http://pngimg.com/upload/face_PNG5660.png", "data.storage[i].Relacionado_Con", "data.storage[i].Tipo_Lista"));
+        
+    }*/
+
+    loadMoreItems() {
+        // Load more items here.
+        console.log("hoa mundo");
+
+    
+            this.Personas.push(new Personas("pedro", "http://pngimg.com/upload/face_PNG5660.png", "data.storage[i].Relacionado_Con", "data.storage[i].Tipo_Lista"));
+        
+    }
+
 }
