@@ -75,9 +75,11 @@ export class ResultComponent implements OnInit {
         
     }*/
 
-    loadMoreItems() {
+    loadMoreItems(args) {
         // Load more items here.
         console.log("hoa mundo");
+        console.log("IDATOS_DATOS " + args.eventName);
+        console.log("IDATOS_DATOS " + args.object);
 
     
             this.Personas.push(new Personas("pedro", "http://pngimg.com/upload/face_PNG5660.png", "data.storage[i].Relacionado_Con", "data.storage[i].Tipo_Lista"));
