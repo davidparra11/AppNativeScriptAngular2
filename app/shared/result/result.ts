@@ -10,3 +10,5 @@ export class Result {
     public Rol_o_Descripcion1: string
   ) { } //esto crea un modelo simple de un resultado  que se puede usar en la app
 }
+
+

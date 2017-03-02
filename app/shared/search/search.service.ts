@@ -7,6 +7,9 @@ import { Config } from "../config";
 import { Search } from "./search";
 import { Result } from "../result/result";
 
+import { Individuo } from "../individuo";
+
+
 @Injectable()
 export class SearchService {  
   constructor(private http: Http) {}  
@@ -22,12 +25,18 @@ export class SearchService {
     .map(data => {
       console.log("resultado de DATA: " + JSON.stringify(data.Resultados));
       let resultList = [];
+      
       data.Resultados.forEach((result) => {
         console.log("resultado de DATA2: " + JSON.stringify(result.NombreCompleto));
+       
         resultList.push(new Result("a","b","c", result.NombreCompleto,"q","f","a",result.Relacionado_Con,"f"));
+        
        });
+       var test = new Individuo(data.ExtraInfo, resultList);
+      // test.ExtraInfo = data.ExtraInfo;
       console.log("resultado de result: " + resultList);
-      return resultList;
+      //return resultList;
+      return test;
     })
     .catch(this.handleErrors);
   }

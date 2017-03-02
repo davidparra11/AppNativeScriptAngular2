@@ -22,13 +22,13 @@ export class SearchComponent implements OnInit {
     searcher: Search;
     isLoading = false;
     isAuthenticating = false;
-    searchForm: Searchform;
+    public searchForm: Searchform;
     public counter: number = 1;
     idPart = "0";
-    namePart = "JUAN%20MANUEL%20SANTOS";
+    namePart = "";
     incluirAlias = "0";
     paginaActual = "1";
-    tamanoPagina = "10";
+    tamanoPagina = "5";
     usuarioID = "1";
     consultaID = "0";
 
@@ -63,22 +63,24 @@ export class SearchComponent implements OnInit {
         // alert("Ingresaste: " + this.user.codigo);
         this.counter = 0;
         //this.searchNombre();
-        this.searchCodigo();
+        this.searchCodigo(newnamePart);
     }
 
-    searchCodigo() {
+    searchCodigo(newnamePart) {
         // TODO: Define
         this.searchService.search(this.searcher)
             .subscribe(
             (val) => {
-                this.router.navigate(["/result"]);
-                console.log("resultado recuperado" + val);
+                this.isLoading = false;
+        this.isAuthenticating = false;
+                this.router.navigate(["/result"], { queryParams: { nombre: newnamePart } });
+                console.log("Resultado recuperado" + val.listaDeResultados);
                 this.data.storage = val;
                 
-                this.searchNombre();
+                //this.searchNombre();
             },
             //PepsResults3.arrayPersonas = val},
-            (error) => alert("Unfortunately we could not find your search.")
+            (error) => alert("Desfarptunamedente no se ha encontrado tu búsqueda")
             );
     }
     searchNombre() {
