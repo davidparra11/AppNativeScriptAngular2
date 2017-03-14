@@ -59,7 +59,7 @@ export class ResultComponent implements OnInit {
         this.consultaID = data.storage.ExtraInfo;
 
         for (let i = 0; i < data.storage.listaDeResultados.length; i++) {
-            this.Personas.push(new Personas(data.storage.listaDeResultados[i].NombreCompleto, "http://pngimg.com/upload/face_PNG5660.png", data.storage.listaDeResultados[i].Relacionado_Con, data.storage.listaDeResultados[i].Tipo_Lista));
+            this.Personas.push(new Personas(data.storage.listaDeResultados[i].NombreCompleto, "https://img.clipartfest.com/2e510d7c0294c0b80218c9b1aa8eed21_male-user-icon-user-clipart-icon_1000-1000.png", data.storage.listaDeResultados[i].Relacionado_Con, data.storage.listaDeResultados[i].Tipo_Lista));
         }
 
     }
@@ -88,22 +88,22 @@ export class ResultComponent implements OnInit {
     loadMoreItems(args) {
         // Load more items here.
        // console.log("hoa mundo");
-       // console.log("IDATOS_DATOS " + args.eventName);
-       // console.log("IDATOS_DATOS " + args.object);
+        console.log("IDATOS_DATOS " + args.eventName);
+        console.log("IDATOS_DATOS " + args.object);
 
 
         console.log("IDATOS_DATOS " + this.namePart);
         this.callService();
 
 
-       // this.Personas.push(new Personas("pedro", "http://pngimg.com/upload/face_PNG5660.png", "data.storage[i].Relacionado_Con", "data.storage[i].Tipo_Lista"));
+       // this.Personas.push(new Personas("pedro", "http://pngimg.com/upload/face_PNG5660.png", "test", "test"));
 
     }
 
     callService(){
 
         console.log("-----------------------------------------");
-       
+     //  this.Personas.push(new Personas("pedro", "https://img.clipartfest.com/2e510d7c0294c0b80218c9b1aa8eed21_male-user-icon-user-clipart-icon_1000-1000.png", "test", "test"));
             this.Personas2 = [];
          this.newSearcher = new Search(this.idPart, this.namePart, this.incluirAlias,
             this.paginaActual, this.tamanoPagina, this.usuarioID, this.consultaID);
@@ -118,7 +118,8 @@ export class ResultComponent implements OnInit {
 
                  for (let i = 0; i < val.length; i++) {
                      console.log("val[i]" + val[i]);
-            this.Personas.push(new Personas(val[i].NombreCompleto, "http://pngimg.com/upload/face_PNG5660.png", val[i].Relacionado_Con, val[i].Tipo_Lista));
+            this.Personas.push(new Personas(val[i].NombreCompleto, "https://img.clipartfest.com/2e510d7c0294c0b80218c9b1aa8eed21_male-user-icon-user-clipart-icon_1000-1000.png", val[i].Relacionado_Con, val[i].Tipo_Lista));
+         // this.Personas.push(new Personas("test", "https://img.clipartfest.com/2e510d7c0294c0b80218c9b1aa8eed21_male-user-icon-user-clipart-icon_1000-1000.png", "test", "test"));
         }
                
                 console.log("Resultado recuperado" + val.NombreCompleto);

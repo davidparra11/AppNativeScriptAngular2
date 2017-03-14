@@ -11,23 +11,22 @@ import { Search } from "../search/search";
 @Injectable()
 export class ResultListService {
   constructor(private http: Http) {}
-  
-  
+    
 
   
   load(searcher: Search) {
     let headers = new Headers();
     headers.append("Authorization", "Bearer ");  // + Config.token
-    console.log("entra a result list service");
+    console.log("entra a result list service con la api: " +  searcher.apiUrl);
     return this.http.get(searcher.apiUrl, {
       headers: headers
     })
     .map(res => res.json()) //RxJS map()para crear un nuevo array con los resultados (Result objects) de la llamada de la funcion.
-    .do(data => {
-      console.log("resultado de DATA: " + data.Resultados);
+    .map(data => {
+      console.log("resultado de DATA List: " + data.Resultados);
       let resultList = [];
       data.Resultados.forEach((result) => {
-        console.log("En el array: " + result.NombreCompleto);
+        console.log("En el array list: " + result.NombreCompleto);
         resultList.push(new Result("a","b","c", result.NombreCompleto,"q","f","a",result.Relacionado_Con,"f"));
       });
       console.log("resultado de result: " + resultList);
