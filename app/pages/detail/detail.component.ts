@@ -45,7 +45,7 @@ export class DetailComponent implements OnInit {
         this.nacionalidad = this.individuoIndex;
     }
     ngOnInit() {
-        this.page.actionBarHidden = true;
+        this.page.actionBarHidden = false;
         // this.page.backgroundImage = "res://background"; 
         this.nacionalidad = this.individuoIndex;
         this.nombreIndividuo = this.individualDetail.listaDeResultados[this.individuoIndex].NombreCompleto
