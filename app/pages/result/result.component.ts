@@ -1,9 +1,10 @@
 import { Component, ChangeDetectionStrategy, OnInit } from "@angular/core";
 import { Page } from "ui/page";
 import { EventData } from 'data/observable';
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, NavigationExtras, Router } from "@angular/router";
 import { Result } from "../../shared/result/result";
 import { Data } from "../../shared/data";
+import { IndividualData } from "../../shared/individualData";
 
 var utilityModule = require("utils/utils");
 
@@ -46,7 +47,7 @@ export class ResultComponent implements OnInit {
     consultaID = "0";
 
 
-    constructor(private page: Page, private route: ActivatedRoute, private data: Data, private resultService: ResultListService) {
+    constructor(private router: Router, private page: Page, private route: ActivatedRoute, private data: Data, private resultService: ResultListService) {
         this.route.queryParams.subscribe(params => {
             this.namePart = params["nombre"];
         });
@@ -63,6 +64,7 @@ export class ResultComponent implements OnInit {
         }
 
     }
+
     ngOnInit() {
         this.page.actionBarHidden = false;
     }
@@ -70,10 +72,16 @@ export class ResultComponent implements OnInit {
     public onItemTap(args) {
         console.log("Item Tapped at cell index: " + args.index);
         console.log("Item Tapped at cell index: " + args.view);
+         this.router.navigate(["/detail"], { queryParams: { index: args.index } });
     }
 
      public showNew(args) {
          utilityModule.openUrl("http://www.noticiaslaft.com/?s=" + args);
+     }
+
+     public showDetails(args) {
+         console.log("index: "+ args.index)
+        // this.router.navigate(["/detail"], { queryParams: { index: args.index } });
      }
     /* public onLoadMoreItems(args){
          console.log("IDATOS_DATOS " + args.eventName);

@@ -1,0 +1,102 @@
+StackLayout {
+  margin-left: 30;
+  margin-right: 30;
+  padding-bottom: 5;
+  
+}
+Image {
+  margin-top: 5;
+  margin-bottom: 20;
+}
+Button, TextField {
+  margin-left: 16;
+  margin-right: 16;
+  margin-bottom: 10;
+}
+.submit-button {
+  background-color: #CB1D00;
+  color: white;
+  margin-top: 20;
+}
+
+.form-controls, .sign-up-stack {
+  opacity: 0;
+}
+
+.background {
+  background-image: url("https://lh3.ggpht.com/VnN7cZEJUoAFSl1-VFBzZV3Rs1iIzJyiUlGWXJbxaWfn6jYSZvajQSRrJzi0BZvPoJs=h900");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+/* TODO: Assigning explicit heights and applying this margin shouldn’t be necessary. */
+.initial-container {
+  margin-top: 30;
+}
+.initial-logo {
+  horizontal-align: center;
+  margin-bottom: 1;
+}
+.initial-label {
+  color: white;
+  horizontal-align: center;
+  margin-bottom: 10;
+}
+.initial-label-second {
+  color: white;
+  horizontal-align: center;
+  margin-bottom: 5;
+}
+.initial-button {
+  background-color: white;
+  color: #CB1D00;
+  height: 45;
+  width: 275;
+  vertical-align: center;
+}
+.initial-button-label {
+  margin-top: 16; 
+  text-align: center;
+  font-weight: bold;
+}
+.initial-stack-label {
+  margin-top: 20;
+  text-align: center;
+  font-weight: bold;
+  background-color: white;
+  color: #CB1D00;
+  height: 25;
+  width: 275;
+  vertical-align: middle;
+}
+
+
+
+TextField {
+  color: black;
+  placeholder-color: #ACA6A7;
+}
+TextField.light {
+  color: #C4AFB4;
+  placeholder-color: #C4AFB4;
+}
+.submit-button {
+  background-color: #CB1D00;
+  color: white;
+  margin-top: 20;
+}
+
+.forgot-password-label {
+  font-size: 13;
+  margin-left: 20;
+  margin-bottom: 45;
+  color: black;
+}
+
+
+.logo-container {
+  visibility: collapse;
+  horizontal-align: center;
+  opacity: 0;
+}

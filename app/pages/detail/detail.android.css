@@ -1,0 +1,28 @@
+.main-container {
+  height: 300;
+  width: 275;
+}
+.initial-label {
+  font-size: 32;
+  letter-spacing: 0.35;
+}
+.main-label {
+  font-size: 28;
+  margin-top: 32;
+  margin-bottom: 32;
+  letter-spacing: 0.3;
+}
+TextField {
+  margin-bottom: 10;
+}
+.submit-button {
+  margin-top: 15;
+}
+
+.forgot-password-label {
+  font-size: 13;
+  text-transform: uppercase;
+}
+.logo-container Image {
+  top: 20;
+}

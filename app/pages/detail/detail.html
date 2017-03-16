@@ -1,0 +1,18 @@
+<GridLayout>
+  <GridLayout #background scaleX="1.4" scaleY="1.4" class="background" (loaded)="startBackgroundAnimation(background)"></GridLayout>
+
+  <StackLayout #initialContainer class="initial-container">
+    <Label text="Juan M. Santos" class="initial-label"></Label>
+    <Image src="https://userscontent2.emaze.com/images/7ada463e-787f-452d-bdd9-192027d0f516/8948092e-2cec-415c-adcf-95334c6fa716.png" stretch="none"
+      class="initial-logo"></Image>
+      <Label [text]="nombreIndividuo" class="initial-label"></Label>
+      <Label text="Lista: PEps" class="initial-label-second"></Label>
+      <Label [text]="nacionalidad" class="initial-label-second"></Label>
+      <Label text="Otra informacion" class="initial-stack-label"></Label>
+      
+  </StackLayout>
+  
+  
+
+
+</GridLayout>
