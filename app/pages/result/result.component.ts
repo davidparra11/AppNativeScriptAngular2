@@ -32,7 +32,7 @@ let europianPersonas = [["Juan Santos", "http://www.las2orillas.co/wp-content/up
 
 export class ResultComponent implements OnInit {
     public arrayDePersonas: any;
-    public test: any;
+    public individuoInstance: any;
     public Personass: Array<Personas>;
     public Personas: Personas[] = [];
     public Personas2: Personas[] = [];
@@ -41,8 +41,8 @@ export class ResultComponent implements OnInit {
     idPart = "0";
     namePart = "";
     incluirAlias = "0";
-    paginaActual = "2";
-    tamanoPagina = "5";
+    paginaActual = "6";
+    tamanoPagina = "1";
     usuarioID = "1";
     consultaID = "0";
 
@@ -52,12 +52,13 @@ export class ResultComponent implements OnInit {
             this.namePart = params["nombre"];
         });
         
-        this.test = data.storage;
-        console.log("DATA Clase" + JSON.stringify(this.data.storage));
-        this.arrayDePersonas = data.storage;
+        var individuoInstance = data.storage;
+        console.log("Consulata Id" + JSON.stringify(this.data.storage.ExtraInfo));
+        this.arrayDePersonas = data.storage.listaDeResultados;
 
         this.Personas = [];
         this.consultaID = data.storage.ExtraInfo;
+        //this.tamanoPagina = data.storage.TotalResultados;
 
         for (let i = 0; i < data.storage.listaDeResultados.length; i++) {
             this.Personas.push(new Personas(data.storage.listaDeResultados[i].NombreCompleto, "https://img.clipartfest.com/2e510d7c0294c0b80218c9b1aa8eed21_male-user-icon-user-clipart-icon_1000-1000.png", data.storage.listaDeResultados[i].Relacionado_Con, data.storage.listaDeResultados[i].Tipo_Lista));
@@ -72,7 +73,7 @@ export class ResultComponent implements OnInit {
     public onItemTap(args) {
         console.log("Item Tapped at cell index: " + args.index);
         console.log("Item Tapped at cell index: " + args.view);
-         this.router.navigate(["/detail"], { queryParams: { index: args.index } });
+        //this.router.navigate(["/detail"], { queryParams: { index: args.index } });
     }
 
      public showNew(args) {
@@ -83,40 +84,31 @@ export class ResultComponent implements OnInit {
          console.log("index: "+ args.index)
         // this.router.navigate(["/detail"], { queryParams: { index: args.index } });
      }
-    /* public onLoadMoreItems(args){
-         console.log("IDATOS_DATOS " + args.eventName);
-         console.log("IDATOS_DATOS " + args.object);
-         this.Personas = [];
- 
-       
-             this.Personas.push(new Personas("pedro", "http://pngimg.com/upload/face_PNG5660.png", "data.storage[i].Relacionado_Con", "data.storage[i].Tipo_Lista"));
-         
-     }*/
-
+   
     loadMoreItems(args) {
         // Load more items here.
-       // console.log("hoa mundo");
         console.log("IDATOS_DATOS " + args.eventName);
         console.log("IDATOS_DATOS " + args.object);
-
-
         console.log("IDATOS_DATOS " + this.namePart);
         this.callService();
-
-
        // this.Personas.push(new Personas("pedro", "http://pngimg.com/upload/face_PNG5660.png", "test", "test"));
 
     }
 
     callService(){
-
         console.log("-----------------------------------------");
      //  this.Personas.push(new Personas("pedro", "https://img.clipartfest.com/2e510d7c0294c0b80218c9b1aa8eed21_male-user-icon-user-clipart-icon_1000-1000.png", "test", "test"));
             this.Personas2 = [];
+            var localPaginaActual = this.paginaActual;
+            var intLocalPaginaActual = +localPaginaActual;
+            intLocalPaginaActual += 1;
+            var strLocalPaginaActual = String(intLocalPaginaActual);
+            this.paginaActual = strLocalPaginaActual;
+            console.log("IDATOS_SEARCHER " + this.tamanoPagina + "otro dato : "+ strLocalPaginaActual);
          this.newSearcher = new Search(this.idPart, this.namePart, this.incluirAlias,
-            this.paginaActual, this.tamanoPagina, this.usuarioID, this.consultaID);
+            strLocalPaginaActual, this.tamanoPagina, this.usuarioID, this.consultaID);
 
-         this.resultService.load(this.newSearcher)
+         this.resultService.load(this.newSearcher, this.arrayDePersonas)
             .subscribe(
             (val) => {
 
@@ -143,3 +135,10 @@ export class ResultComponent implements OnInit {
     }
 
 }
+
+ /* public onLoadMoreItems(args){
+         console.log("IDATOS_DATOS " + args.eventName);
+         console.log("IDATOS_DATOS " + args.object);
+         this.Personas = [];      
+             this.Personas.push(new Personas("pedro", "http://pngimg.com/upload/face_PNG5660.png", "data.storage[i].Relacionado_Con", "data.storage[i].Tipo_Lista"));        
+     }*/

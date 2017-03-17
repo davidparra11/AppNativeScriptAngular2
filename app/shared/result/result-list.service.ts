@@ -14,7 +14,7 @@ export class ResultListService {
     
 
   
-  load(searcher: Search) {
+  load(searcher: Search, individuo: any) {
     let headers = new Headers();
     headers.append("Authorization", "Bearer ");  // + Config.token
     console.log("entra a result list service con la api: " +  searcher.apiUrl);

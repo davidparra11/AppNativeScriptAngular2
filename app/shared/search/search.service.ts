@@ -27,12 +27,10 @@ export class SearchService {
       let resultList = [];
       
       data.Resultados.forEach((result) => {
-        console.log("resultado de DATA2: " + JSON.stringify(result.NombreCompleto));
-       
-        resultList.push(new Result("a","b","c", result.NombreCompleto,"q","f","a",result.Relacionado_Con,"f"));
-        
+        //console.log("resultado de DATA2: " + JSON.stringify(result.NombreCompleto));       
+        resultList.push(new Result("a","b","c", result.NombreCompleto,"q","f","a",result.Relacionado_Con,"f"));        
        });
-       var test = new Individuo(data.ExtraInfo, resultList);
+       var test = new Individuo(data.ExtraInfo, resultList, data.TotalResultados);
       // test.ExtraInfo = data.ExtraInfo;
       console.log("resultado de result: " + resultList);
       //return resultList;

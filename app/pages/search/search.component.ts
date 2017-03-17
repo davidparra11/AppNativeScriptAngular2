@@ -54,10 +54,7 @@ export class SearchComponent implements OnInit {
         var re = / /gi;
         var newnamePart = this.searchForm.nombre.replace(re, "%20");
         console.log(newnamePart);
-        /* if (!this.user.isValidCode()) {
-             alert("El codigo esta entre [3,15].");
-             return;
-         }*/
+       
         this.searcher = new Search(this.idPart, newnamePart, this.incluirAlias,
             this.paginaActual, this.tamanoPagina, this.usuarioID, this.consultaID);
         // alert("Ingresaste: " + this.user.codigo);
