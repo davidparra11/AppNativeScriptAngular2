@@ -30,11 +30,11 @@ export class SearchService {
         //console.log("resultado de DATA2: " + JSON.stringify(result.NombreCompleto));       
         resultList.push(new Result("a","b","c", result.NombreCompleto,"q","f","a",result.Relacionado_Con,"f"));        
        });
-       var test = new Individuo(data.ExtraInfo, resultList, data.TotalResultados);
-      // test.ExtraInfo = data.ExtraInfo;
+       var resultInstance = new Individuo(data.ExtraInfo, resultList, data.TotalResultados);
+      // resultInstance.ExtraInfo = data.ExtraInfo;
       console.log("resultado de result: " + resultList);
       //return resultList;
-      return test;
+      return resultInstance;
     })
     .catch(this.handleErrors);
   }

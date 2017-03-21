@@ -14,7 +14,7 @@ export class ResultListService {
     
 
   
-  load(searcher: Search, individuo: any) {
+  load(searcher: Search, individuoArray: any) {
     let headers = new Headers();
     headers.append("Authorization", "Bearer ");  // + Config.token
     console.log("entra a result list service con la api: " +  searcher.apiUrl);
@@ -28,6 +28,7 @@ export class ResultListService {
       data.Resultados.forEach((result) => {
         console.log("En el array list: " + result.NombreCompleto);
         resultList.push(new Result("a","b","c", result.NombreCompleto,"q","f","a",result.Relacionado_Con,"f"));
+        individuoArray.push(new Result("a","b","c", result.NombreCompleto,"q","f","a",result.Relacionado_Con,"f"));
       });
       console.log("resultado de result: " + resultList);
       return resultList;

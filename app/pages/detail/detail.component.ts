@@ -27,6 +27,8 @@ export class DetailComponent implements OnInit {
     individuoIndex: string;
     nacionalidad = "colombiana";
     nombreIndividuo = "";
+    tipoPersona = "";
+    relacionadoCon = "";
 
     @ViewChild("container") container: ElementRef; //angular ViewChild decorador, crea una nueva propiedad que aputa a stacklauout
     @ViewChild("initialContainer") initialContainer: ElementRef;
@@ -34,7 +36,6 @@ export class DetailComponent implements OnInit {
     @ViewChild("logoContainer") logoContainer: ElementRef;
     @ViewChild("formControls") formControls: ElementRef;
     @ViewChild("password") password: ElementRef;
-
 
     constructor(private router: Router, private userService: UserService, private page: Page, private route: ActivatedRoute, private data: Data) {
         this.user = new User();
@@ -47,8 +48,12 @@ export class DetailComponent implements OnInit {
     ngOnInit() {
         this.page.actionBarHidden = false;
         // this.page.backgroundImage = "res://background"; 
+        
         this.nacionalidad = this.individuoIndex;
-        this.nombreIndividuo = this.individualDetail.listaDeResultados[this.individuoIndex].NombreCompleto
+        this.nombreIndividuo = this.individualDetail.listaDeResultados[this.individuoIndex].NombreCompleto;
+        this.tipoPersona = this.individualDetail.listaDeResultados[this.individuoIndex].Tipo_Persona;
+        this.relacionadoCon = this.individualDetail.listaDeResultados[this.individuoIndex].Relacionado_Con;
+        console.log("origne lista" + this.tipoPersona);
               
     }
 

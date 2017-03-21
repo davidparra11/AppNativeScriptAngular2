@@ -1,8 +1,7 @@
 StackLayout {
   margin-left: 30;
   margin-right: 30;
-  padding-bottom: 5;
-  
+  padding-bottom: 5;  
 }
 Image {
   margin-top: 5;
@@ -42,6 +41,7 @@ Button, TextField {
   color: white;
   horizontal-align: center;
   margin-bottom: 10;
+  font-size: 50vw;
 }
 .initial-label-second {
   color: white;

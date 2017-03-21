@@ -12,15 +12,10 @@ import { Search } from "../../shared/search/search";
 import { ResultListService } from "../../shared/result/result-list.service";
 import { Searchform } from "../../shared/search/search-form";
 
-class Personas {
+class ItemsToShow {
     constructor(public title: string, public src: string, public relacionado_Con: string, public tipo_Lista: string) { }
 }
 
-let europianPersonas = [["Juan Santos", "http://www.las2orillas.co/wp-content/uploads/2014/05/JuanManuel-Santos.png"],
-["Barack Obama", "http://pngimg.com/upload/face_PNG5660.png"],
-["OTro", "http://pngimg.com/upload/face_PNG5660.png"],
-["OTro", "http://pngimg.com/upload/face_PNG5660.png"]
-];
 
 @Component({
     selector: "result",
@@ -33,9 +28,8 @@ let europianPersonas = [["Juan Santos", "http://www.las2orillas.co/wp-content/up
 export class ResultComponent implements OnInit {
     public arrayDePersonas: any;
     public individuoInstance: any;
-    public Personass: Array<Personas>;
-    public Personas: Personas[] = [];
-    public Personas2: Personas[] = [];
+    public Personass: Array<ItemsToShow>;
+    public Personas: ItemsToShow[] = [];
     newSearcher: Search;
 
     idPart = "0";
@@ -52,16 +46,17 @@ export class ResultComponent implements OnInit {
             this.namePart = params["nombre"];
         });
         
-        var individuoInstance = data.storage;
+        var individuoInstance = data.storage.listaDeResultados;
         console.log("Consulata Id" + JSON.stringify(this.data.storage.ExtraInfo));
         this.arrayDePersonas = data.storage.listaDeResultados;
+        
 
         this.Personas = [];
         this.consultaID = data.storage.ExtraInfo;
         //this.tamanoPagina = data.storage.TotalResultados;
 
         for (let i = 0; i < data.storage.listaDeResultados.length; i++) {
-            this.Personas.push(new Personas(data.storage.listaDeResultados[i].NombreCompleto, "https://img.clipartfest.com/2e510d7c0294c0b80218c9b1aa8eed21_male-user-icon-user-clipart-icon_1000-1000.png", data.storage.listaDeResultados[i].Relacionado_Con, data.storage.listaDeResultados[i].Tipo_Lista));
+            this.Personas.push(new ItemsToShow(data.storage.listaDeResultados[i].NombreCompleto, "https://img.clipartfest.com/2e510d7c0294c0b80218c9b1aa8eed21_male-user-icon-user-clipart-icon_1000-1000.png", data.storage.listaDeResultados[i].Relacionado_Con, data.storage.listaDeResultados[i].Tipo_Lista));
         }
 
     }
@@ -73,7 +68,7 @@ export class ResultComponent implements OnInit {
     public onItemTap(args) {
         console.log("Item Tapped at cell index: " + args.index);
         console.log("Item Tapped at cell index: " + args.view);
-        //this.router.navigate(["/detail"], { queryParams: { index: args.index } });
+        this.router.navigate(["/detail"], { queryParams: { index: args.index } });
     }
 
      public showNew(args) {
@@ -90,6 +85,7 @@ export class ResultComponent implements OnInit {
         console.log("IDATOS_DATOS " + args.eventName);
         console.log("IDATOS_DATOS " + args.object);
         console.log("IDATOS_DATOS " + this.namePart);
+        console.log("array de PERSonas" + JSON.stringify(this.arrayDePersonas.length));
         this.callService();
        // this.Personas.push(new Personas("pedro", "http://pngimg.com/upload/face_PNG5660.png", "test", "test"));
 
@@ -98,7 +94,7 @@ export class ResultComponent implements OnInit {
     callService(){
         console.log("-----------------------------------------");
      //  this.Personas.push(new Personas("pedro", "https://img.clipartfest.com/2e510d7c0294c0b80218c9b1aa8eed21_male-user-icon-user-clipart-icon_1000-1000.png", "test", "test"));
-            this.Personas2 = [];
+            
             var localPaginaActual = this.paginaActual;
             var intLocalPaginaActual = +localPaginaActual;
             intLocalPaginaActual += 1;
@@ -111,14 +107,17 @@ export class ResultComponent implements OnInit {
          this.resultService.load(this.newSearcher, this.arrayDePersonas)
             .subscribe(
             (val) => {
+                this.arrayDePersonas.push();
 
                 console.log("val " + val);
         console.log("length " + val.length);
         console.log("Nombre Completo [0] " + val[0].NombreCompleto);
+      //  console.log("NUEVO ARRAY DE LA CLASE INSTANCIADA " + this.individuoInstance[0]);
 
                  for (let i = 0; i < val.length; i++) {
                      console.log("val[i]" + val[i]);
-            this.Personas.push(new Personas(val[i].NombreCompleto, "https://img.clipartfest.com/2e510d7c0294c0b80218c9b1aa8eed21_male-user-icon-user-clipart-icon_1000-1000.png", val[i].Relacionado_Con, val[i].Tipo_Lista));
+                     
+            this.Personas.push(new ItemsToShow(val[i].NombreCompleto, "https://img.clipartfest.com/2e510d7c0294c0b80218c9b1aa8eed21_male-user-icon-user-clipart-icon_1000-1000.png", val[i].Relacionado_Con, val[i].Tipo_Lista));
          // this.Personas.push(new Personas("test", "https://img.clipartfest.com/2e510d7c0294c0b80218c9b1aa8eed21_male-user-icon-user-clipart-icon_1000-1000.png", "test", "test"));
         }
                
