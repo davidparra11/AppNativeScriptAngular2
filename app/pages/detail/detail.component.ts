@@ -25,10 +25,11 @@ export class DetailComponent implements OnInit {
     messageButton: string = "Inicio de Sesion";
     isAuthenticating = false; //prevenir el multitoque
     individuoIndex: string;
-    nacionalidad = "colombiana";
+    fuente = "ofac";
     nombreIndividuo = "";
     tipoPersona = "";
     relacionadoCon = "";
+    tipoLista= "";
 
     @ViewChild("container") container: ElementRef; //angular ViewChild decorador, crea una nueva propiedad que aputa a stacklauout
     @ViewChild("initialContainer") initialContainer: ElementRef;
@@ -43,18 +44,18 @@ export class DetailComponent implements OnInit {
             this.individuoIndex = params["index"];
         });
         this.individualDetail = data.storage;
-        this.nacionalidad = this.individuoIndex;
+        this.fuente = this.individuoIndex;
     }
+
     ngOnInit() {
         this.page.actionBarHidden = false;
         // this.page.backgroundImage = "res://background"; 
-        
-        this.nacionalidad = this.individuoIndex;
+        this.tipoLista = this.individualDetail.listaDeResultados[this.individuoIndex].Tipo_Lista;        
+        this.fuente = this.individualDetail.listaDeResultados[this.individuoIndex].Fuente;
         this.nombreIndividuo = this.individualDetail.listaDeResultados[this.individuoIndex].NombreCompleto;
         this.tipoPersona = this.individualDetail.listaDeResultados[this.individuoIndex].Tipo_Persona;
         this.relacionadoCon = this.individualDetail.listaDeResultados[this.individuoIndex].Relacionado_Con;
-        console.log("origne lista" + this.tipoPersona);
-              
+        console.log("origne lista" + this.tipoPersona);              
     }
 
     submit() {

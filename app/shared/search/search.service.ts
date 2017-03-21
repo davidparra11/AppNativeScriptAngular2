@@ -28,7 +28,7 @@ export class SearchService {
       
       data.Resultados.forEach((result) => {
         //console.log("resultado de DATA2: " + JSON.stringify(result.NombreCompleto));       
-        resultList.push(new Result("a","b","c", result.NombreCompleto,"q","f","a",result.Relacionado_Con,"f"));        
+        resultList.push(new Result("fuente","b","c", result.NombreCompleto, result.Origen_Lista, result.Tipo_Lista, result.Tipo_Persona,result.Relacionado_Con,"f"));        
        });
        var resultInstance = new Individuo(data.ExtraInfo, resultList, data.TotalResultados);
       // resultInstance.ExtraInfo = data.ExtraInfo;

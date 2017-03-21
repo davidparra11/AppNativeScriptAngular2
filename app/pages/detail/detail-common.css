@@ -42,6 +42,7 @@ Button, TextField {
   horizontal-align: center;
   margin-bottom: 10;
   font-size: 50vw;
+  text-align: left;
 }
 .initial-label-second {
   color: white;
@@ -66,7 +67,7 @@ Button, TextField {
   font-weight: bold;
   background-color: white;
   color: #CB1D00;
-  height: 25;
+  height: 95;
   width: 275;
   vertical-align: middle;
 }

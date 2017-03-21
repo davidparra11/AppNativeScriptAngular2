@@ -27,8 +27,8 @@ export class ResultListService {
       let resultList = [];
       data.Resultados.forEach((result) => {
         console.log("En el array list: " + result.NombreCompleto);
-        resultList.push(new Result("a","b","c", result.NombreCompleto,"q","f","a",result.Relacionado_Con,"f"));
-        individuoArray.push(new Result("a","b","c", result.NombreCompleto,"q","f","a",result.Relacionado_Con,"f"));
+        resultList.push(new Result("fuente","b","c", result.NombreCompleto, result.Origen_Lista, result.Tipo_Lista, result.Tipo_Persona,result.Relacionado_Con,"f"));
+        individuoArray.push(new Result("fuente","b","c", result.NombreCompleto, result.Origen_Lista, result.Tipo_Lista, result.Tipo_Persona,result.Relacionado_Con,"f"));
       });
       console.log("resultado de result: " + resultList);
       return resultList;

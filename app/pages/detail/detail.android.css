@@ -5,6 +5,12 @@
 .initial-label {
   font-size: 20;
   letter-spacing: 0.35;
+  text-align: right;
+}
+.initial-label-left {
+  font-size: 20;
+  letter-spacing: 0.35;
+  text-align: left;
 }
 .main-label {
   font-size: 28;
