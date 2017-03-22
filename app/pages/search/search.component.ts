@@ -10,14 +10,13 @@ import { Result } from "../../shared/result/result";
 import { Data } from "../../shared/data";
 import { Searchform } from "../../shared/search/search-form";
 
-
 @Component({
     selector: "my-app",
     providers: [SearchService],
     templateUrl: "pages/search/search.html",
     styleUrls: ["pages/search/search-common.css", "pages/search/search.css"]
 })
-
+/** Clase Search que administrea el componente de la vista búsqueda. */
 export class SearchComponent implements OnInit {
     searcher: Search;
     isLoading = false;
@@ -37,6 +36,7 @@ export class SearchComponent implements OnInit {
     constructor(private router: Router, private searchService: SearchService, private page: Page, private data: Data) {
         this.searchForm = new Searchform();
     }
+    /** Esta funcion es invocada antes de que las propiedades vinculadas a datos de la directiva se hayan comprobado por primera vez. */
     ngOnInit() {
         this.page.actionBarHidden = false;
     }
@@ -58,9 +58,9 @@ export class SearchComponent implements OnInit {
         this.counter = 0;
         this.searchCodigo(newnamePart);
     }
-
+    /** La función llama al servicio searchService para traer los datos del nombre consultado. */
     searchCodigo(newnamePart) {
-        // TODO: Define
+        // TODO: Define val variable.
         this.searchService.search(this.searcher)
             .subscribe(
             (val) => {

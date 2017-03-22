@@ -16,6 +16,7 @@ import { TextField } from "ui/text-field";
     templateUrl: "pages/login/login.html",
     styleUrls: ["pages/login/login-common.css", "pages/login/login.css"]
 })
+/** Clase login que se encarga de la adminsitracion del componente para el logueo del usuario. */
 export class LoginComponent implements OnInit {
     user: User;
     public counter: number = 1;
