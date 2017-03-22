@@ -57,28 +57,6 @@ export class DetailComponent implements OnInit {
         this.relacionadoCon = this.individualDetail.listaDeResultados[this.individuoIndex].Relacionado_Con;
         console.log("origne lista" + this.tipoPersona);              
     }
-
-    submit() {
-        /*if (!this.user.isValidCode()) {
-             alert("El codigo esta entre [3,10].");
-             return;  listaDeResultados[i].NombreCompleto
-         }
-         if (!this.user.isValidEmail()) {
-      alert("Enter a valid email address.");
-      return;
-    }
-    this.login();
-  }
-
-  login() {
-    if (getConnectionType() === connectionType.none) {
-      alert("Groceries requires an internet connection to log in.");
-      return;
-    }
-         */
-        alert("Ingresaste: " + this.user.codigo);
-        //this.loginUser();
-    }
   
   startBackgroundAnimation(background) {
     background.animate({

@@ -53,13 +53,9 @@ export class SearchComponent implements OnInit {
         this.isAuthenticating = true;
         var re = / /gi;
         var newnamePart = this.searchForm.nombre.replace(re, "%20");
-        console.log(newnamePart);
-       
         this.searcher = new Search(this.idPart, newnamePart, this.incluirAlias,
             this.paginaActual, this.tamanoPagina, this.usuarioID, this.consultaID);
-        // alert("Ingresaste: " + this.user.codigo);
         this.counter = 0;
-        //this.searchNombre();
         this.searchCodigo(newnamePart);
     }
 
@@ -69,22 +65,13 @@ export class SearchComponent implements OnInit {
             .subscribe(
             (val) => {
                 this.isLoading = false;
-        this.isAuthenticating = false;
+                this.isAuthenticating = false;
                 this.router.navigate(["/result"], { queryParams: { nombre: newnamePart } });
                 console.log("Resultado recuperado" + val.listaDeResultados);
                 this.data.storage = val;
-                
-                //this.searchNombre();
             },
             //PepsResults3.arrayPersonas = val},
             (error) => alert("Desfarptunamedente no se ha encontrado tu búsqueda")
             );
     }
-    searchNombre() {
-        this.router.navigate(["/result"]);
-        this.isLoading = false;
-        this.isAuthenticating = false;
-        // this.userService.search(this.user);
-    }
-
 }
