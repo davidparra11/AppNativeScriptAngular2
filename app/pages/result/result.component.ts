@@ -34,7 +34,7 @@ export class ResultComponent implements OnInit {
     namePart = "";
     incluirAlias = "0";
     paginaActual = "6";
-    tamanoPagina = "1";
+    tamanoPagina = "4";
     usuarioID = "1";
     consultaID = "0";
 
@@ -79,7 +79,6 @@ export class ResultComponent implements OnInit {
         console.log("array de PERSonas" + JSON.stringify(this.arrayDePersonas.length));
         this.callService();
         // this.Personas.push(new Personas("pedro", "http://pngimg.com/upload/face_PNG5660.png", "test", "test"));
-
     }
 
     callService() {
@@ -97,7 +96,7 @@ export class ResultComponent implements OnInit {
         this.resultService.load(this.newSearcher, this.arrayDePersonas)
             .subscribe(
             (val) => {
-                this.arrayDePersonas.push();
+                //this.arrayDePersonas.push();
 
                 console.log("val " + val);
                 console.log("length " + val.length);

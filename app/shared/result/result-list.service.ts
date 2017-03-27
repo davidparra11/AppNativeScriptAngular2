@@ -12,8 +12,6 @@ import { Search } from "../search/search";
 export class ResultListService {
   constructor(private http: Http) {}
     
-
-  
   load(searcher: Search, individuoArray: any) {
     let headers = new Headers();
     headers.append("Authorization", "Bearer ");  // + Config.token

@@ -1,6 +1,6 @@
 StackLayout {
-  margin-left: 30;
-  margin-right: 30;
+  margin-left: 10;
+  margin-right: 10;
   padding-bottom: 5;  
 }
 Image {
@@ -28,7 +28,6 @@ Button, TextField {
   background-size: cover;
   background-position: center;
 }
-
 /* TODO: Assigning explicit heights and applying this margin shouldn’t be necessary. */
 .initial-container {
   margin-top: 30;
@@ -38,6 +37,7 @@ Button, TextField {
   margin-bottom: 1;
 }
 .initial-label {
+  
   color: white;
   horizontal-align: center;
   margin-bottom: 10;
@@ -48,6 +48,12 @@ Button, TextField {
   color: white;
   horizontal-align: center;
   margin-bottom: 5;
+}
+.initial-label-third {
+  color: green;
+  horizontal-align: center;
+  margin-bottom: 5;
+  background-color: #CB1D00;
 }
 .initial-button {
   background-color: white;
@@ -100,4 +106,24 @@ TextField.light {
   visibility: collapse;
   horizontal-align: center;
   opacity: 0;
+}
+.header-label {
+    background-color: #0099CC;
+    horizontal-align: center;
+    vertical-align: center;
+    color: #FFFFFF;
+    margin: 2;
+}
+
+
+.scroll-menu {
+    height: auto;
+    padding: 1;
+}
+ 
+.scroll-pane {
+    background-color: #FF4081;
+    width: 100%;
+    height: auto;
+    margin: 1;
 }

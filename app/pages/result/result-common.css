@@ -3,6 +3,7 @@ ListView {
 }
 Label{
   color: black;
+  font-size: 10;
 }
 .visible {
   animation-name: show;

@@ -40,12 +40,12 @@ export class SearchComponent implements OnInit {
     ngOnInit() {
         this.page.actionBarHidden = false;
     }
-
+    /** Esta función sirve para mostar un mensaje al usuario . */
     public get message(): string {
         if (this.counter == 1) {
             return "Realiza la búsqueda por Identificación o por Nombres.";
         } else {
-            return "No se encontró coincidencia!";
+            return "Buscando coincidencias!";
         }
     }
     submit() {
@@ -66,12 +66,17 @@ export class SearchComponent implements OnInit {
             (val) => {
                 this.isLoading = false;
                 this.isAuthenticating = false;
-                this.router.navigate(["/result"], { queryParams: { nombre: newnamePart } });
                 console.log("Resultado recuperado" + val.listaDeResultados);
+                this.counter = 1;
                 this.data.storage = val;
+                this.router.navigate(["/result"], { queryParams: { nombre: newnamePart } });
+
             },
-            //PepsResults3.arrayPersonas = val},
-            (error) => alert("Desfarptunamedente no se ha encontrado tu búsqueda")
+            (error) => {
+                alert("Desafortunadamente no se ha encontrado tu búsqueda")
+                this.isLoading = false;
+                this.isAuthenticating = false;
+            }
             );
     }
 }

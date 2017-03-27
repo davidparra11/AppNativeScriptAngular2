@@ -9,12 +9,13 @@ import { connectionType, getConnectionType } from "connectivity";
 import { Animation } from "ui/animation";
 import { prompt } from "ui/dialogs";
 import { TextField } from "ui/text-field";
+import { ObservableArray } from "data/observable-array"
 
 import { Data } from "../../shared/data";
 
 @Component({
     selector: "detail",
-    providers: [UserService],
+    providers: [UserService, ObservableArray],
     templateUrl: "pages/detail/detail.html",
     styleUrls: ["pages/detail/detail-common.css", "pages/detail/detail.css"]
 })
@@ -26,11 +27,17 @@ export class DetailComponent implements OnInit {
     messageButton: string = "Inicio de Sesion";
     isAuthenticating = false; //prevenir el multitoque
     individuoIndex: string;
+    stringTest = "hola mundo";
     fuente = "ofac";
     nombreIndividuo = "";
-    tipoPersona = "";
+    tipoPersona = ""
     relacionadoCon = "";
     tipoLista= "";
+    itemss: number = 9;
+    itemsArray: any;
+    public items:Array<string> = [];
+    
+    colors = new ObservableArray(["red", "green", "blue"]);
 
     @ViewChild("container") container: ElementRef; //angular ViewChild decorador, crea una nueva propiedad que aputa a stacklauout
     @ViewChild("initialContainer") initialContainer: ElementRef;
@@ -39,13 +46,20 @@ export class DetailComponent implements OnInit {
     @ViewChild("formControls") formControls: ElementRef;
     @ViewChild("password") password: ElementRef;
 
-    constructor(private router: Router, private userService: UserService, private page: Page, private route: ActivatedRoute, private data: Data) {
+    constructor(private router: Router, private userService: UserService, private page: Page, private route: ActivatedRoute, private data: Data, private colores: ObservableArray<string>) {
         this.user = new User();
         this.route.queryParams.subscribe(params => {
             this.individuoIndex = params["index"];
         });
+        this.itemsArray = data.storage.listaDeResultados;
         this.individualDetail = data.storage;
         this.fuente = this.individuoIndex;
+        this.items.push("Default");
+        this.items.push("Validation");
+        this.items.push("Filter");
+        this.items.push("Business");
+        this.items.push("Provisional");
+         var colores = new ObservableArray(["red", "green", "blue"]);
     }
 
     ngOnInit() {

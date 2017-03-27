@@ -1,28 +1,18 @@
-<GridLayout>
-  <GridLayout #background scaleX="1.4" scaleY="1.4" class="background" (loaded)="startBackgroundAnimation(background)"></GridLayout>
-
-  <StackLayout #initialContainer class="initial-container">
-    <Label [text]="nombreIndividuo" class="initial-label"></Label>
+<StackLayout>
+      <!-- This is where the magic happens -->
+         <ScrollView orientation="horizontal">
+            <StackLayout orientation="horizontal" class="scroll-menu">
+              <StackLayout class="scroll-pane" *ngFor="let item of itemsArray">
+                <Label [text]="nombreIndividuo" class="initial-label"></Label>
     <Image src="https://userscontent2.emaze.com/images/7ada463e-787f-452d-bdd9-192027d0f516/8948092e-2cec-415c-adcf-95334c6fa716.png" stretch="none"
       class="initial-logo"></Image>
-      <Label [text]="fuente" class="initial-label"></Label>
+      <Label  [text]="item.NombreCompleto" class="initial-label"></Label>
       <Label text="Lista: PEps" class="initial-label-second"></Label>
       <TextView [text]="relacionadoCon" class="initial-stack-label"></TextView>
-
-      <GridLayout class="m-15"  columns="*,2*" rows="auto auto auto">
-        <Label class="initial-label"  height="50" row="0" text="Tipo Persona:"></Label>
-        <Label class="initial-label" col="1" height="50" row="0" [text]="tipoPersona"></Label>
-        <Label class="initial-label"  height="50" row="1" text="Origne Lista:"></Label>
-        <Label class="initial-label" col="1" height="50" row="1" [text]="tipoPersona"></Label>
-        <Label class="initial-label"  height="50" row="2" text="Title 5"></Label>
-        
-    </GridLayout>
-      
+                </StackLayout>
+                
+            </StackLayout>
+        </ScrollView>
+         
+         
   </StackLayout>
-
-  
-  
-  
-
-
-</GridLayout>
