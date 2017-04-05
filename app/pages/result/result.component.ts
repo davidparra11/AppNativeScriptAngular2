@@ -26,6 +26,7 @@ class ItemsToShow {
 })
 
 export class ResultComponent implements OnInit {
+    isLoading = false;
     public arrayDePersonas: any;
     public individuoInstance: any;
     public Personas: ItemsToShow[] = [];
@@ -34,7 +35,7 @@ export class ResultComponent implements OnInit {
     namePart = "";
     incluirAlias = "0";
     paginaActual = "6";
-    tamanoPagina = "4";
+    tamanoPagina = "5";
     usuarioID = "1";
     consultaID = "0";
 
@@ -52,7 +53,6 @@ export class ResultComponent implements OnInit {
         for (let i = 0; i < data.storage.listaDeResultados.length; i++) {
             this.Personas.push(new ItemsToShow(data.storage.listaDeResultados[i].NombreCompleto, "https://img.clipartfest.com/2e510d7c0294c0b80218c9b1aa8eed21_male-user-icon-user-clipart-icon_1000-1000.png", data.storage.listaDeResultados[i].Relacionado_Con, data.storage.listaDeResultados[i].Tipo_Lista));
         }
-
     }
 
     ngOnInit() {
@@ -60,6 +60,8 @@ export class ResultComponent implements OnInit {
     }
 
     public onItemTap(args) {
+        this.isLoading = true;
+        console.log("indicador; "+ args.index);
         this.router.navigate(["/detail"], { queryParams: { index: args.index } });
     }
 
@@ -83,7 +85,6 @@ export class ResultComponent implements OnInit {
 
     callService() {
         console.log("-----------------------------------------");
-
         var localPaginaActual = this.paginaActual;
         var intLocalPaginaActual = +localPaginaActual;
         intLocalPaginaActual += 1;

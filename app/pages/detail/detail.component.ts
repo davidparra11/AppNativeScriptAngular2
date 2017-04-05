@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from "@angular/core"; //OnInit es una clase interfaz de typescript
 import { User } from "../../shared/user/user";
 import { UserService } from "../../shared/user/user.service";
-import { Router,ActivatedRoute } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 import { Page } from "ui/page";
 import { Color } from "color";
 import { View } from "ui/core/view";
@@ -51,7 +51,8 @@ export class DetailComponent implements OnInit {
         this.route.queryParams.subscribe(params => {
             this.individuoIndex = params["index"];
         });
-        this.itemsArray = data.storage.listaDeResultados;
+        var listado = data.storage.listaDeResultados;
+        this.itemsArray = listado.slice(this.individuoIndex);
         this.individualDetail = data.storage;
         this.fuente = this.individuoIndex;
         this.items.push("Default");

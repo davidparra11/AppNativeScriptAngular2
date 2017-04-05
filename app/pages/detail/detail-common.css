@@ -115,15 +115,14 @@ TextField.light {
     margin: 2;
 }
 
-
 .scroll-menu {
     height: auto;
     padding: 1;
 }
  
 .scroll-pane {
-    background-color: #FF4081;
-    width: 100%;
+    background-color: #051043;
+    width: 90%;
     height: auto;
     margin: 1;
 }
