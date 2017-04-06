@@ -1,6 +1,6 @@
 export class Individuo {
     ExtraInfo: string;
-    listaDeResultados: any;
+    listaDeResultados: Array<string>;
     TotalResultados: any;
 
     constructor(ExtraInfo: string, listaDeResultados: any, TotalResultados:any) {

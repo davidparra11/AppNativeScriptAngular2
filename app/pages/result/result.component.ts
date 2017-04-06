@@ -38,6 +38,7 @@ export class ResultComponent implements OnInit {
     tamanoPagina = "5";
     usuarioID = "1";
     consultaID = "0";
+    longitudArray:number;
 
     constructor(private router: Router, private page: Page, private route: ActivatedRoute, private data: Data, private resultService: ResultListService) {
         this.route.queryParams.subscribe(params => {
@@ -46,10 +47,12 @@ export class ResultComponent implements OnInit {
         var individuoInstance = data.storage.listaDeResultados;
         console.log("Consulata Id" + JSON.stringify(this.data.storage.ExtraInfo));
         this.arrayDePersonas = data.storage.listaDeResultados;
+        this.longitudArray = data.storage.listaDeResultados.length;
 
         this.Personas = [];
         this.consultaID = data.storage.ExtraInfo;
         //this.tamanoPagina = data.storage.TotalResultados;
+        console.log("longitud del array para mirar porq se repte: " + data.storage.listaDeResultados.length);
         for (let i = 0; i < data.storage.listaDeResultados.length; i++) {
             this.Personas.push(new ItemsToShow(data.storage.listaDeResultados[i].NombreCompleto, "https://img.clipartfest.com/2e510d7c0294c0b80218c9b1aa8eed21_male-user-icon-user-clipart-icon_1000-1000.png", data.storage.listaDeResultados[i].Relacionado_Con, data.storage.listaDeResultados[i].Tipo_Lista));
         }
@@ -79,7 +82,11 @@ export class ResultComponent implements OnInit {
         console.log("IDATOS_DATOS " + args.eventName);
         console.log("IDATOS_DATOS " + args.object);
         console.log("array de PERSonas" + JSON.stringify(this.arrayDePersonas.length));
-        this.callService();
+        if (this.longitudArray > 4){
+            this.callService();
+        }
+
+        //this.callService();
         // this.Personas.push(new Personas("pedro", "http://pngimg.com/upload/face_PNG5660.png", "test", "test"));
     }
 
