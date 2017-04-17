@@ -18,9 +18,9 @@ import { Searchform } from "../../shared/search/search-form";
 })
 /** Clase Search que administrea el componente de la vista búsqueda. */
 export class SearchComponent implements OnInit {
-    searcher: Search;
-    isLoading = false;
-    isAuthenticating = false;
+    searcher: Search;  //Un objeto que devuelve un url construida a razon de cierts parámetros
+    isLoading = false; //Para detener o activar un Activity indicator View
+    isAuthenticating = false; //Para bloquear campos es entrada
     public searchForm: Searchform;
     public counter: number = 1;
     idPart = "0";
@@ -48,10 +48,13 @@ export class SearchComponent implements OnInit {
             return "Buscando coincidencias!";
         }
     }
+
+    /** La función se dispara por un evento del layout, cuando se quiere hacer la busqueda del 
+     * texto ingresado. */
     submit() {
         this.isLoading = true;
         this.isAuthenticating = true;
-        var re = / /gi;
+        var re = / /gi; //expresion regular
         var newnamePart = this.searchForm.nombre.replace(re, "%20");
         this.searcher = new Search(this.idPart, newnamePart, this.incluirAlias,
             this.paginaActual, this.tamanoPagina, this.usuarioID, this.consultaID);
