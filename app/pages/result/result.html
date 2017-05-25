@@ -1,13 +1,17 @@
+<StackLayout>
 <ListView [items]="Personas" class="list-group" (itemTap)="onItemTap($event)" (loadMoreItems)="loadMoreItems($event)">
     
     <template let-persona="item" let-i="index" let-odd="odd" let-even="even">
-        <GridLayout class="list-group-item" columns="*,2*" rows="1*, 2*, 2*" style.backgroundColor="lightgray">
-            <Image [src]="persona.src" col="0" row="0" stretch="aspectFill" rowSpan="2" class="imagen-row" (itemTap)="showDetails($event)"></Image>
+        <GridLayout #mainContainer class="list-group-item" columns="*,2*" rows="1*, 2*, 2*" style.backgroundColor="lightblue">
+            <Image [src]="persona.src" class="imagen-row" col="0" row="0"  rowSpan="2" (itemTap)="showDetails($event)"></Image>
             <Label [text]="persona.title" col="1" row="0" (itemTap)="showDetails($event)"></Label>
             <Label [text]="persona.tipo_Lista" col="1" row="1" (tap)="showNew(persona.title)"></Label>
-            <Label text="ver noticiias" col="1" row="2" (tap)="showNew(persona.title)"></Label>
-            
+            <Label text="ver noticiias" col="1" row="2" (tap)="showNew(persona.title)"></Label>            
             </GridLayout>
     </template>
-    
-</ListView>
+    <StackLayout class="dimmer" visibility="{{isLoading ? 'visible' : 'collapsed'}}">
+    <ActivityIndicator [busy]="isLoading" [visibility]="isLoading ? 'visible' : 'collapse'" row="*"  width="100" height="100"></ActivityIndicator>
+    </StackLayout>
+    </ListView>
+
+</StackLayout>

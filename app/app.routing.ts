@@ -4,7 +4,7 @@ import { LoginComponent } from "./pages/login/login.component";
 import { DetailComponent } from "./pages/detail/detail.component";
 
 export const routes = [
-  { path: "", redirectTo: "/search", pathMatch: "full" },
+  { path: "", redirectTo: "/", pathMatch: "full" },
   { path: "", component: LoginComponent },
   { path: "search", component: SearchComponent },
   { path: "result", component: ResultComponent },
