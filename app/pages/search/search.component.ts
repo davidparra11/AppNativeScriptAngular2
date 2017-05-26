@@ -16,11 +16,13 @@ import { Searchform } from "../../shared/search/search-form";
     templateUrl: "pages/search/search.html",
     styleUrls: ["pages/search/search-common.css", "pages/search/search.css"]
 })
-/** Clase Search que administra el componente de la vista búsqueda. */
+/**
+ *  Clase Search que administra el componente de la vista búsqueda. 
+ */
 export class SearchComponent implements OnInit {
     searcher: Search;  //Un objeto que devuelve un url construida a razon de cierts parámetros
     isLoading = false; //Para detener o activar un Activity indicator View
-    isAuthenticating = false; //Para bloquear campos es entrada
+    isAuthenticating = false; //Para bloquear campos en entrada
     public searchForm: Searchform;
     public counter: number = 1;
     idPart = "0";
