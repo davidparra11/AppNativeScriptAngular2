@@ -60,8 +60,10 @@ export class ResultComponent implements OnInit {
             this.Personas.push(new ItemsToShow(data.storage.listaDeResultados[i].NombreCompleto, "https://oiganoticias.files.wordpress.com/2016/04/santos-7.jpg?w=723", data.storage.listaDeResultados[i].Relacionado_Con, data.storage.listaDeResultados[i].Tipo_Lista));
         }
     }
-    /** Se utiliza por que requiere de implementaciones mas pesadas que el 
-     * constructor puede realizar. */
+    /**
+     * Se utiliza por que requiere de implementaciones mas pesadas que el 
+     * constructor puede realizar. 
+     * */
     ngOnInit() {
         this.page.actionBarHidden = false;
     }
@@ -81,30 +83,35 @@ export class ResultComponent implements OnInit {
     public showNew(args) {
         utilityModule.openUrl("http://www.noticiaslaft.com/?s=" + args);
     }
-
-    public showDetails(args) {
-        console.log("index: " + args.index)
-        // this.router.navigate(["/detail"], { queryParams: { index: args.index } });
-    }
-
+    /**
+     * Método heredado del template para hacer un triger de una función cuando se llega al final de
+     * los resultados y se hace un scroll a la página para recuperar mas datos.
+     * @param args {any}
+     */
     loadMoreItems(args) {
         // Load more items here.
         console.log("array de PERSonas" + JSON.stringify(this.arrayDePersonas.length));
         if (this.longitudArray > 4){
             this.callService();
         }
-        //this.callService();
+        this.callService();
         // this.Personas.push(new Personas("pedro", "http://pngimg.com/upload/face_PNG5660.png", "test", "test"));
     }
-
+    /**
+     * Función para llamar el servicio de cargar nuevos resultados a al array de la vista actual. 
+     */
     callService() {
         console.log("-----------------------------------------");
+        // Bloque definir el string de la página actual incrementado en uno (esto para hacer un mejor approach en la consulta).
         var localPaginaActual = this.paginaActual;
         var intLocalPaginaActual = +localPaginaActual;
         intLocalPaginaActual += 1;
         var strLocalPaginaActual = String(intLocalPaginaActual);
         this.paginaActual = strLocalPaginaActual;
         console.log("PAGIN ACTUAL " + strLocalPaginaActual);
+        // Fin del Bloque.
+
+        // Se instancia una clae Search para mandarlo al servicio resultService, el objeto final construirá la url de consulta.
         this.newSearcher = new Search(this.idPart, this.namePart, this.incluirAlias,
             strLocalPaginaActual, this.tamanoPagina, this.usuarioID, this.consultaID);
 
@@ -113,8 +120,7 @@ export class ResultComponent implements OnInit {
             (val) => {
                 for (let i = 0; i < val.length; i++) {
                     console.log("val[i]" + val[i]);
-                    this.Personas.push(new ItemsToShow(val[i].NombreCompleto, "https://img.clipartfest.com/2e510d7c0294c0b80218c9b1aa8eed21_male-user-icon-user-clipart-icon_1000-1000.png", val[i].Relacionado_Con, val[i].Tipo_Lista));
-                    // this.Personas.push(new Personas("test", "https://img.clipartfest.com/2e510d7c0294c0b80218c9b1aa8eed21_male-user-icon-user-clipart-icon_1000-1000.png", "test", "test"));
+                    this.Personas.push(new ItemsToShow(val[i].NombreCompleto, "https://img.clipartfest.com/2e510d7c0294c0b80218c9b1aa8eed21_male-user-icon-user-clipart-icon_1000-1000.png", val[i].Relacionado_Con, val[i].Tipo_Lista));                    
                 }
             },
             (error) => alert("Desfarptunamedente no se ha encontrado tu búsqueda")

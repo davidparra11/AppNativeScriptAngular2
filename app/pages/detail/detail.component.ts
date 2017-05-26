@@ -55,14 +55,10 @@ export class DetailComponent implements OnInit {
         this.itemsArray = listado.slice(this.individuoIndex);
         this.individualDetail = data.storage;
         this.fuente = this.individuoIndex;
-        this.items.push("Default");
-        this.items.push("Validation");
-        this.items.push("Filter");
-        this.items.push("Business");
-        this.items.push("Provisional");
-         var colores = new ObservableArray(["red", "green", "blue"]);
     }
-
+    /**
+     *  Esta funcion es invocada antes de que las propiedades vinculadas a datos de la directiva se hayan comprobado por primera vez. 
+     */    
     ngOnInit() {
         this.page.actionBarHidden = false;
         // this.page.backgroundImage = "res://background"; 
