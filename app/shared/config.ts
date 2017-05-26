@@ -1,3 +1,7 @@
+/**
+ * Clase que al ser instanciada con los parametros de entrada de las propiedades de la clase
+ * devuelve una Url seteada para hacer la consulta a la REST.
+ */
 export class Config {
   // Url de la REST para las consultas de Listas.
   url = "http://186.31.113.190:8003/ConsultaListasPeps.svc/ConsultaIndividual";

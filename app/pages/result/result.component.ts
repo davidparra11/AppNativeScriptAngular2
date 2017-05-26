@@ -63,7 +63,7 @@ export class ResultComponent implements OnInit {
     /**
      * Se utiliza por que requiere de implementaciones mas pesadas que el 
      * constructor puede realizar. 
-     * */
+     */
     ngOnInit() {
         this.page.actionBarHidden = false;
     }
