@@ -11,55 +11,69 @@ import { prompt } from "ui/dialogs";
 import { TextField } from "ui/text-field";
 
 @Component({
-    selector: "",
-    providers: [UserService],
-    templateUrl: "pages/login/login.html",
-    styleUrls: ["pages/login/login-common.css", "pages/login/login.css"]
+  selector: "",
+  providers: [UserService],
+  templateUrl: "pages/login/login.html",
+  styleUrls: ["pages/login/login-common.css", "pages/login/login.css"]
 })
-/** Clase login que se encarga de la adminsitración del componente para el logueo del usuario. */
+/** 
+ * Clase login que se encarga de la adminsitración del componente para el logueo del usuario. 
+ */
 export class LoginComponent implements OnInit {
-    user: User;
-    public counter: number = 1;
-    messageButton: string = "Inicio de Sesion";
-    isAuthenticating = false; //prevenir el multitoque
+  user: User;
+  public counter: number = 1;
+  messageButton: string = "Inicio de Sesion";
+  isAuthenticating = false; //prevenir el multitoque del boton
 
-    @ViewChild("container") container: ElementRef; //angular ViewChild decorador, crea una nueva propiedad que aputa a stacklauout
-    @ViewChild("initialContainer") initialContainer: ElementRef;
-    @ViewChild("mainContainer") mainContainer: ElementRef;
-    @ViewChild("logoContainer") logoContainer: ElementRef;
-    @ViewChild("formControls") formControls: ElementRef;
-    @ViewChild("password") password: ElementRef;
+  @ViewChild("container") container: ElementRef; //angular ViewChild decorador, crea una nueva propiedad que aputa a stacklauout
+  @ViewChild("initialContainer") initialContainer: ElementRef;
+  @ViewChild("mainContainer") mainContainer: ElementRef;
+  @ViewChild("logoContainer") logoContainer: ElementRef;
+  @ViewChild("formControls") formControls: ElementRef;
+  @ViewChild("password") password: ElementRef;
 
-    /**Contructor de la clase */
-    constructor(private router: Router, private userService: UserService, private page: Page) {
-        this.user = new User();
-    }
-    /** Método que se carga antes de iniciar la vista del componente */
-    ngOnInit() {
-        this.page.actionBarHidden = true;
-        // this.page.backgroundImage = "res://background";        
-    }
-    /** Funcion llamada desde la template del componente cada vez que intentamos iniciar sesión */
-    submit() {
-        alert("Ingresaste: " + this.user.codigo);
-        this.loginUser();
-    }
-    /** Función que hace la consulta al SP y validar las credenciales de acceso. */
-    loginUser() {
-        // TODO: Cuando este el SP, definir las reglas de acceso.
-        this.router.navigate(["/search"])
-    }
-    focusPassword() {
+  /**
+   * Contructor de la clase 
+   */
+  constructor(private router: Router, private userService: UserService, private page: Page) {
+    this.user = new User();
+  }
+  /** 
+   * Método que se carga antes de iniciar la vista del componente 
+   */
+  ngOnInit() {
+    this.page.actionBarHidden = true;
+    // this.page.backgroundImage = "res://background";        
+  }
+  /** 
+   * Función llamada desde la template del componente cada vez que intentamos iniciar sesión 
+   */
+  submit() {
+    alert("Ingresaste: " + this.user.codigo);
+    this.loginUser();
+  }
+  /** 
+   * Función que hace la consulta al SP y validar las credenciales de acceso. 
+   */
+  loginUser() {
+    // TODO: Cuando este el SP, definir las reglas de acceso.
+    this.router.navigate(["/search"])
+  }
+  focusPassword() {
     this.password.nativeElement.focus();
   }
-  /** Funcion para animar la imagen de Background de esta vista */
+  /** 
+   * Funcion para animar la imagen de Background de esta vista 
+   */
   startBackgroundAnimation(background) {
     background.animate({
       scale: { x: 1.0, y: 1.0 },
       duration: 10000
     });
   }
-/** Funcion que muestra el formulario de login,  imagen empresarial y otros despues de medio segundo*/
+  /** 
+   * Funcion que muestra el formulario de login,  imagen empresarial y otros despues de medio segundo
+   */
   showMainContent() {
     let initialContainer = <View>this.initialContainer.nativeElement;
     let mainContainer = <View>this.mainContainer.nativeElement;
@@ -71,7 +85,7 @@ export class LoginComponent implements OnInit {
     initialContainer.animate({
       opacity: 0,
       duration: 500
-    }).then(function() {
+    }).then(function () {
       // After the animation completes, hide the initial container and
       // show the main container and logo. The main container and logo will
       // not immediately appear because their opacity is set to 0 in CSS.

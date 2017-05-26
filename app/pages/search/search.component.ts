@@ -38,11 +38,15 @@ export class SearchComponent implements OnInit {
     constructor(private router: Router, private searchService: SearchService, private page: Page, private data: Data) {
         this.searchForm = new Searchform();
     }
-    /** Esta funcion es invocada antes de que las propiedades vinculadas a datos de la directiva se hayan comprobado por primera vez. */
+    /** 
+     * Esta funcion es invocada antes de que las propiedades vinculadas a datos de la directiva se hayan comprobado por primera vez. 
+     */
     ngOnInit() {
         this.page.actionBarHidden = false;
     }
-    /** Esta función sirve para mostar un mensaje al usuario. */
+    /** 
+     * Esta función sirve para mostar un mensaje al usuario. 
+     */
     public get message(): string {
         if (this.counter == 1) {
             return "Realiza la búsqueda por Identificación o por Nombres.";
@@ -52,7 +56,8 @@ export class SearchComponent implements OnInit {
     }
 
     /** La función se dispara por un evento del layout, cuando se quiere hacer la busqueda del 
-     * texto ingresado. */
+     * texto ingresado.
+     */
     submit() {
         this.isLoading = true;
         this.isAuthenticating = true;
@@ -63,7 +68,9 @@ export class SearchComponent implements OnInit {
         this.counter = 0;
         this.searchCodigo(newnamePart);
     }
-    /** La función llama al servicio searchService para traer los datos del nombre consultado. */
+    /** 
+     * La función llama al servicio searchService para traer los datos del nombre consultado. 
+     */
     searchCodigo(newnamePart) {
         // TODO: Define val variable.
         this.searchService.search(this.searcher)

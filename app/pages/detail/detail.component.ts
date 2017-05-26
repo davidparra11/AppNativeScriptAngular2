@@ -19,7 +19,9 @@ import { Data } from "../../shared/data";
     templateUrl: "pages/detail/detail.html",
     styleUrls: ["pages/detail/detail-common.css", "pages/detail/detail.css"]
 })
-/** clase detalle que muestra la mayoria de datos de un individuo cuando es seleccionado del ListView. */
+/** 
+ * clase detalle que muestra la mayoria de datos de un individuo cuando es seleccionado del ListView. 
+ */
 export class DetailComponent implements OnInit {
     user: User;
     public counter: number = 1;
