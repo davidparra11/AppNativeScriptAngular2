@@ -1,6 +1,7 @@
 export class Config {
+  // Url de la REST para las consultas de Listas.
   url = "http://186.31.113.190:8003/ConsultaListasPeps.svc/ConsultaIndividual";
-  static token = ""; //TODO: la rest deberia pedirlo por temas de seguridad.
+  static token = ""; //TODO: la REST deberia pedirlo por temas de seguridad.
   idPart: string;
   namePart: string;
   incluirAlias: string;
@@ -19,7 +20,6 @@ export class Config {
     this.tamanoPagina = tamanoPagina;
     this.consultaID = consultaID;
     this.apiUrl = this.url + "/" + this.idPart + "/" + this.namePart + "/" + this.incluirAlias + "/" + this.paginaActual + "/" + this.tamanoPagina + "/" + this.usuarioID + "/" + this.consultaID;
-
 
   }
 

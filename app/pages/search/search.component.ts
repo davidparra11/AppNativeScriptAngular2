@@ -42,7 +42,7 @@ export class SearchComponent implements OnInit {
     ngOnInit() {
         this.page.actionBarHidden = false;
     }
-    /** Esta función sirve para mostar un mensaje al usuario . */
+    /** Esta función sirve para mostar un mensaje al usuario. */
     public get message(): string {
         if (this.counter == 1) {
             return "Realiza la búsqueda por Identificación o por Nombres.";

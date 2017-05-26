@@ -45,7 +45,7 @@ export class ResultListService {
       })
       .catch(this.handleErrors);
   }
-  /** Se manejan los errores resultates del Observable */
+  /** Se manejan los errores resultantes del Observable */
   handleErrors(error: Response) {
     console.log("error: " + JSON.stringify(error.json()));
     return Observable.throw(error);

@@ -33,11 +33,8 @@ export class DetailComponent implements OnInit {
     tipoPersona = ""
     relacionadoCon = "";
     tipoLista= "";
-    itemss: number = 9;
     itemsArray: any;
     public items:Array<string> = [];
-    
-    colors = new ObservableArray(["red", "green", "blue"]);
 
     @ViewChild("container") container: ElementRef; //angular ViewChild decorador, crea una nueva propiedad que aputa a stacklauout
     @ViewChild("initialContainer") initialContainer: ElementRef;
@@ -57,7 +54,7 @@ export class DetailComponent implements OnInit {
         this.fuente = this.individuoIndex;
     }
     /**
-     *  Esta funcion es invocada antes de que las propiedades vinculadas a datos de la directiva se hayan comprobado por primera vez. 
+     *  Esta función es invocada antes de que las propiedades vinculadas a datos de la directiva se hayan comprobado por primera vez. 
      */    
     ngOnInit() {
         this.page.actionBarHidden = false;

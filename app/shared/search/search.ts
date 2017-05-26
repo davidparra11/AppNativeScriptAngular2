@@ -1,5 +1,8 @@
+/**
+ * Clase que apartir de unos parámetros de entrada, construye una url.
+ */
 export class Search {
-    url = "http://186.31.113.190:8003/ConsultaListasPeps.svc/ConsultaIndividual";
+  url = "http://186.31.113.190:8003/ConsultaListasPeps.svc/ConsultaIndividual";
   token = ""; //TODO: la rest deberia pedirlo por temas de seguridad.
   idPart: string;
   namePart: string;
