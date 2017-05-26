@@ -30,52 +30,36 @@ export class LoginComponent implements OnInit {
     @ViewChild("formControls") formControls: ElementRef;
     @ViewChild("password") password: ElementRef;
 
-
+    /**Contructor de la clase */
     constructor(private router: Router, private userService: UserService, private page: Page) {
         this.user = new User();
     }
+    /** Método que se carga antes de iniciar la vista del componente */
     ngOnInit() {
         this.page.actionBarHidden = true;
         // this.page.backgroundImage = "res://background";        
     }
-
+    /** Funcion llamada desde la template del componente cada vez que intentamos iniciar sesión */
     submit() {
-        /*if (!this.user.isValidCode()) {
-             alert("El codigo esta entre [3,10].");
-             return;
-         }
-         if (!this.user.isValidEmail()) {
-      alert("Enter a valid email address.");
-      return;
-    }
-    this.login();
-  }
-
-  login() {
-    if (getConnectionType() === connectionType.none) {
-      alert("Groceries requires an internet connection to log in.");
-      return;
-    }
-         */
         alert("Ingresaste: " + this.user.codigo);
         this.loginUser();
     }
+    /** Función que hace la consulta al SP y validar las credenciales de acceso. */
     loginUser() {
-        // TODO: Define
+        // TODO: Cuando este el SP, definir las reglas de acceso.
         this.router.navigate(["/search"])
     }
     focusPassword() {
     this.password.nativeElement.focus();
   }
-
-
+  /** Funcion para animar la imagen de Background de esta vista */
   startBackgroundAnimation(background) {
     background.animate({
       scale: { x: 1.0, y: 1.0 },
       duration: 10000
     });
   }
-
+/** Funcion que muestra el formulario de login,  imagen empresarial y otros despues de medio segundo*/
   showMainContent() {
     let initialContainer = <View>this.initialContainer.nativeElement;
     let mainContainer = <View>this.mainContainer.nativeElement;
@@ -107,39 +91,3 @@ export class LoginComponent implements OnInit {
     });
   }
 }
-/*
- loginUser() {
-        // TODO: Define
-        this.userService.search(this.user)
-            .subscribe(
-            () => this.router.navigate(["/result"]),
-            (error) => alert("Unfortunately we could not find your account.")
-            );
-    }
-    searchNombre() {
-        this.router.navigate(["/result"]);
-        this.userService.search(this.user);
-    }
-    toggleDisplay() {
-        this.byCode = !this.byCode;
-        let container = <View>this.container.nativeElement;
-        container.animate({
-            backgroundColor: this.byCode ? new Color("white") : new Color("#30bcff"),
-            duration: 200
-        });
-
-
-    }
-
-    this.userService.login(this.user)
-      .subscribe(
-        () => {
-          this.isAuthenticating = false;
-          this.router.navigate(["/"]);
-        },
-        (error) => {
-          alert("Unfortunately we could not find your account.");
-          this.isAuthenticating = false;
-        }
-      );
-*/

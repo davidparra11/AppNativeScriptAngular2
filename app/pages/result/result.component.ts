@@ -38,9 +38,7 @@ export class ResultComponent implements OnInit {
     tamanoPagina = "5";
     usuarioID = "1";
     consultaID = "0";
-    longitudArray:number;
-    
-    @ViewChild("mainContainer") mainContainer: ElementRef;
+    longitudArray:number;    
 
     constructor(private router: Router, private page: Page, private route: ActivatedRoute, private data: Data, private resultService: ResultListService) {
         this.route.queryParams.subscribe(params => {

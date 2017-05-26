@@ -1,3 +1,4 @@
+/** Clase para implementar el modulo "Validator" */
 var validator = require("validator");
 
 export class Searchform {

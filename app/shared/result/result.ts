@@ -1,3 +1,4 @@
+/** Esto crea un modelo simple de un resultado  que se puede usar en la app */
 export class Result {
   constructor(public Fuente: string,
     public Id: string,
@@ -8,7 +9,7 @@ export class Result {
     public Tipo_Persona: string,
     public Relacionado_Con: string,
     public Rol_o_Descripcion1: string
-  ) { } //esto crea un modelo simple de un resultado  que se puede usar en la app
+  ) { } 
 }
 
 

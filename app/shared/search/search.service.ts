@@ -12,8 +12,14 @@ import { Individuo } from "../individuo";
 
 @Injectable()
 export class SearchService {  
-  constructor(private http: Http) {}  
-
+  constructor(private http: Http) {}
+  /**
+   * Funcion que busca devolver una instancia de la clase individop de un resultado consultado.
+   * Se agregan como parámetro un buscardor "searcher" que es una instancia con la url preparada para
+   * la búsqueda del contenido necesario de la rest
+   * @param searcher {any}
+   * @return resultInstance {Individuo}
+   */
   search(searcher: Search) {
     let headers = new Headers();
     headers.append("Authorization", "Bearer "); // + Config.token
